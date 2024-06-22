@@ -1,0 +1,27 @@
+.headline {
+  font-family: var(--primary-font);
+}
+
+.headline-1 {
+  font-size: 60px;
+}
+
+.headline-2 {
+  font-size: 48px;
+}
+
+.headline-3 {
+  font-size: 36px;
+}
+
+.headline-4 {
+  font-size: 24px;
+}
+
+.headline-5 {
+  font-size: 18px;
+}
+
+.underline {
+  text-decoration: underline;
+}

@@ -1,0 +1,55 @@
+{
+  "signIn": {
+    "title": {
+      "main": "JOB/BLOG",
+      "sub": "Willkommen zurück! <0>Anmelden</0>"
+    },
+    "signInForm": {
+      "placeHolder": {
+        "email": "E-Mail",
+        "password": "Passwort"
+      },
+      "registrationInfo": "Haben Sie kein Konto <0>hier registrieren!</0>. Passwort vergessen, machen sie <1>ein neues Passwort</1>",
+      "button": {
+        "submit": "Absenden"
+      }
+    }
+  },
+  "signUp": {
+    "title": {
+      "main": "JOB/BLOG",
+      "sub": "Erstellen Sie Ihr <0>Profil!</0>"
+    },
+    "signUpForm": {
+      "placeHolder": {
+        "email": "E-Mail",
+        "username": "Benutzername",
+        "password": "Passwort"
+      },
+      "signInInfo": "Haben Sie bereits ein Konto <0>hier anmelden!</0>. Passwort vergessen, machen sie <1>ein neues Passwort</1>",
+      "button": {
+        "submit": "Absenden"
+      }
+    }
+  },
+  "error": {
+    "invalidCredentials": {
+      "general": "Die gewählten Anmeldeinformationen sind nicht korrekt. Sie können sich <0>hier anmelden</0> oder <1>ein neues Passwort erstellen</1>"
+    },
+    "emailInvalid": {
+      "email": "Geben Sie eine gültige E-Mail-Adresse ein."
+    },
+    "usernameRequired": {
+      "username": "Geben sie einen Benutzernamen ein"
+    },
+    "passwordLength": {
+      "password": "Das Passwort muss mindestens 8 Zeichen haben"
+    },
+    "emailTaken": {
+      "email": "Es gibt bereits einen Account mit dieser E-Mail-Adresse"
+    },
+    "usernameTaken": {
+      "username": "Es gibt bereits einen Account mit dieser Usernamen"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+.sign-in-form-container {
+  display: grid;
+  gap: 32px;
+}
+
+.signup-info-link {
+  font-weight: 600;
+  color: var(--primary-color);
+  text-decoration: underline;
+  cursor: pointer;
+}

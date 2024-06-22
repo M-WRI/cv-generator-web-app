@@ -1,0 +1,36 @@
+.auth-layout-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100vh;
+  gap: 20px;
+  padding: 0 16px;
+}
+
+.auth-layout-container section {
+  max-width: 300px;
+  width: 100%;
+}
+
+.right-section {
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 685px) {
+  .auth-layout-container section {
+    padding: 32px 0;
+  }
+
+  .left-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  .right-section {
+    display: none;
+    justify-content: unset;
+  }
+}

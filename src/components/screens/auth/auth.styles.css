@@ -1,0 +1,10 @@
+.sign-up-header {
+  margin-bottom: 62px;
+  color: var(--primary-color);
+  text-align: center;
+}
+
+.sign-up-sub-header {
+  color: var(--primary-color);
+  width: 250px;
+}

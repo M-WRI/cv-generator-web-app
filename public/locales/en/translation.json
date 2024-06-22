@@ -1,0 +1,55 @@
+{
+  "signIn": {
+    "title": {
+      "main": "JOB/BLOG",
+      "sub": "Welcome back! <0>Sign in</0>"
+    },
+    "signInForm": {
+      "placeHolder": {
+        "email": "Email",
+        "password": "Password"
+      },
+      "registrationInfo": "Don't have an account <0>register here!</0>",
+      "button": {
+        "submit": "Submit"
+      }
+    }
+  },
+  "signUp": {
+    "title": {
+      "main": "JOB/BLOG",
+      "sub": "Create your <0>Profile!</0>"
+    },
+    "signUpForm": {
+      "placeHolder": {
+        "email": "Email",
+        "username": "Username",
+        "password": "Password"
+      },
+      "signInInfo": "Already have an account <0>sign in here!</0>",
+      "button": {
+        "submit": "Submit"
+      }
+    }
+  },
+  "error": {
+    "invalidCredentials": {
+      "general": "The chosen credentials are not correct. You can <0>sign up here</0> or <1>create a new password</1>"
+    },
+    "emailInvalid": {
+      "email": "Enter a valid email address."
+    },
+    "usernameRequired": {
+      "username": "Enter a username."
+    },
+    "passwordLength": {
+      "password": "The password must be at least 8 characters long."
+    },
+    "emailTaken": {
+      "email": "An account with this email address already exists."
+    },
+    "usernameTaken": {
+      "username": "An account with this username already exists."
+    }
+  }
+}
