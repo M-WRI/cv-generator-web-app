@@ -3,8 +3,9 @@ import { useTranslation } from "react-i18next";
 import { InputField } from "../../molecules";
 import { Button } from "../../atoms";
 import { useResetPassword } from "../../../hooks/useResetPassword";
-import "./resetPasswordForm.styles.css";
 import { useParams } from "react-router-dom";
+
+import "./forms.styles.css";
 
 interface ResetPasswordFormValues {
   password: string;
@@ -23,10 +24,7 @@ export const ResetPasswordForm: React.FC = () => {
 
   return (
     <FormProvider {...methods}>
-      <form
-        className="reset-password-form-container"
-        onSubmit={handleSubmit(onSubmit)}
-      >
+      <form className="form-container" onSubmit={handleSubmit(onSubmit)}>
         <InputField
           name="newPassword"
           type="password"

@@ -12,7 +12,7 @@ export const ResetPasswordPage: React.FC = () => {
     <AuthLayout
       left={<ResetPasswordForm />}
       right={
-        <Headline level={2} className="sign-up-sub-header">
+        <Headline level={2} className="auth-screen-sub-header">
           {
             <Trans
               t={t}

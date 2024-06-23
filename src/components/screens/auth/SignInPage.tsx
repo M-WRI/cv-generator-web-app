@@ -12,14 +12,14 @@ export const SignInPage: React.FC = () => {
     <AuthLayout
       left={
         <>
-          <Headline className="sign-up-header" level={1}>
+          <Headline className="auth-screen-header" level={1}>
             {t("signIn.title.main")}
           </Headline>
           <SignInForm />
         </>
       }
       right={
-        <Headline level={2} className="sign-up-sub-header">
+        <Headline level={2} className="auth-screen-sub-header">
           {
             <Trans
               t={t}

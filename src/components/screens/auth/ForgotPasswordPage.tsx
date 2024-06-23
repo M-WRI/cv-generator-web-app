@@ -11,7 +11,7 @@ export const ForgotPasswordPage = () => {
     <AuthLayout
       left={<ForgotPasswordForm />}
       right={
-        <Headline level={2} className="sign-up-sub-header">
+        <Headline level={2} className="auth-screen-sub-header">
           {<Trans t={t} i18nKey="forgotPassword.title.sub" />}
         </Headline>
       }

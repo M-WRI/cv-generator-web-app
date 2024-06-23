@@ -4,6 +4,8 @@ import { useForgotPassword } from "../../../hooks";
 import { InputField } from "../../molecules";
 import { Button } from "../../atoms";
 
+import "./forms.styles.css";
+
 interface ForgotPasswordFormValues {
   email: string;
 }
@@ -26,10 +28,7 @@ export const ForgotPasswordForm: React.FC = () => {
 
   return (
     <FormProvider {...methods}>
-      <form
-        className="sign-in-form-container"
-        onSubmit={handleSubmit(onSubmit)}
-      >
+      <form className="form-container" onSubmit={handleSubmit(onSubmit)}>
         <InputField
           name="email"
           type="email"

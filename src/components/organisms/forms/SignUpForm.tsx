@@ -1,19 +1,21 @@
 import { FormProvider, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
-import { useSignIn } from "../../../hooks";
+import { useSignUp } from "../../../hooks";
 import { InputField } from "../../molecules";
 import { Button, ErrorMessage, Text } from "../../atoms";
 import { useNavigate } from "react-router-dom";
 
-import "./signInForm.styles.css";
+import "./forms.styles.css";
 
-interface SignInFormValues {
+interface SignUpFormValues {
   email: string;
+  username: string;
   password: string;
+  general: string;
 }
 
-export const SignInForm: React.FC = () => {
-  const methods = useForm<SignInFormValues>();
+export const SignUpForm: React.FC = () => {
+  const methods = useForm<SignUpFormValues>();
   const { t } = useTranslation();
   const navigate = useNavigate();
   const {
@@ -21,42 +23,45 @@ export const SignInForm: React.FC = () => {
     setError,
     formState: { errors },
   } = methods;
-  const { mutate } = useSignIn(setError);
+  const { mutate } = useSignUp(setError);
 
-  const onSubmit = (data: SignInFormValues) => {
+  const onSubmit = (data: SignUpFormValues) => {
     mutate(data);
   };
 
   const redirectToSignUp = () => {
-    navigate("/signup");
+    navigate("/");
   };
 
   const redirectToForgotPassword = () => {
     navigate("/forgot-password");
   };
 
-  const hasGeneralError = Object.values(errors).length;
+  const hasGeneralError = errors?.general && Object.values(errors?.general);
 
   return (
     <FormProvider {...methods}>
-      <form
-        className="sign-in-form-container"
-        onSubmit={handleSubmit(onSubmit)}
-      >
+      <form className="form-container" onSubmit={handleSubmit(onSubmit)}>
         <InputField
           name="email"
           type="email"
-          placeholder={t("signIn.signInForm.placeHolder.email")}
-          required
+          placeholder={t("signUp.signUpForm.placeHolder.email")}
+          error={errors?.email ? errors.email : undefined}
+        />
+        <InputField
+          name="username"
+          type="text"
+          placeholder={t("signUp.signUpForm.placeHolder.username")}
+          error={errors?.username ? errors.username : undefined}
         />
         <InputField
           name="password"
           type="password"
-          placeholder={t("signIn.signInForm.placeHolder.password")}
-          required
+          placeholder={t("signUp.signUpForm.placeHolder.password")}
+          error={errors?.password ? errors.password : undefined}
         />
         <Button type="submit" action={() => console.log("hi")}>
-          {t("signIn.signInForm.button.submit")}
+          {t("signUp.signUpForm.button.submit")}
         </Button>
         {hasGeneralError ? (
           <ErrorMessage
@@ -64,28 +69,28 @@ export const SignInForm: React.FC = () => {
             components={[
               <span
                 key="signup"
-                className="signup-info-link"
+                className="info-link"
                 onClick={() => redirectToSignUp()}
               />,
               <span
-                key="forgott-password"
-                className="signup-info-link"
+                key="forgot-password"
+                className="info-link"
                 onClick={() => redirectToForgotPassword()}
               />,
             ]}
           />
         ) : (
           <Text
-            translationKey="signIn.signInForm.registrationInfo"
+            translationKey="signUp.signUpForm.signInInfo"
             components={[
               <span
-                key="signup"
-                className="signup-info-link"
+                key="signIn"
+                className="info-link"
                 onClick={() => redirectToSignUp()}
               />,
               <span
-                key="forgott-password"
-                className="signup-info-link"
+                key="forgot-password"
+                className="info-link"
                 onClick={() => redirectToForgotPassword()}
               />,
             ]}
