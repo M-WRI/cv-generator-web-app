@@ -7,14 +7,19 @@ import "./auth.styles.css";
 export const ForgotPasswordPage = () => {
   const { t } = useTranslation();
 
-  return (
-    <AuthLayout
-      left={<ForgotPasswordForm />}
-      right={
+  const layoutConfig = {
+    left: {
+      component: <ForgotPasswordForm />,
+      className: "justify-center",
+    },
+    right: {
+      component: (
         <Headline level={2} className="auth-screen-sub-header">
           {<Trans t={t} i18nKey="forgotPassword.title.sub" />}
         </Headline>
-      }
-    />
-  );
+      ),
+    },
+  };
+
+  return <AuthLayout {...layoutConfig} />;
 };

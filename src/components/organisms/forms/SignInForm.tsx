@@ -1,8 +1,8 @@
 import { FormProvider, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { useSignIn } from "../../../hooks";
-import { InputField } from "../../molecules";
-import { Button, ErrorMessage, Text } from "../../atoms";
+import { Button, InputField } from "../../molecules";
+import { ErrorMessage, Text } from "../../atoms";
 import { useNavigate } from "react-router-dom";
 
 import "./forms.styles.css";
@@ -21,7 +21,7 @@ export const SignInForm: React.FC = () => {
     setError,
     formState: { errors },
   } = methods;
-  const { mutate } = useSignIn(setError);
+  const { mutate, isLoading } = useSignIn(setError);
 
   const onSubmit = (data: SignInFormValues) => {
     mutate(data);
@@ -52,7 +52,7 @@ export const SignInForm: React.FC = () => {
           placeholder={t("signIn.signInForm.placeHolder.password")}
           required
         />
-        <Button type="submit" action={() => console.log("hi")}>
+        <Button type="submit" isLoading={isLoading}>
           {t("signIn.signInForm.button.submit")}
         </Button>
         {hasGeneralError ? (

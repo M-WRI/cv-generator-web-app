@@ -2,14 +2,14 @@
   "signIn": {
     "title": {
       "main": "JOB/BLOG",
-      "sub": "Welcome back! <0>Sign in</0>"
+      "sub": "Welcome back! <0>Sign In</0>"
     },
     "signInForm": {
       "placeHolder": {
         "email": "Email",
         "password": "Password"
       },
-      "registrationInfo": "Don't have an account <0>register here!</0>",
+      "registrationInfo": "Don't have an account <0>register here!</0>. Forgot your password, create <1>a new password</1>",
       "button": {
         "submit": "Submit"
       }
@@ -26,30 +26,53 @@
         "username": "Username",
         "password": "Password"
       },
-      "signInInfo": "Already have an account <0>sign in here!</0>",
+      "signInInfo": "Already have an account <0>sign in here!</0>. Forgot your password, create <1>a new password</1>",
+      "button": {
+        "submit": "Submit"
+      }
+    }
+  },
+  "forgotPassword": {
+    "title": {
+      "sub": "Forgot password?"
+    },
+    "forgotPasswordForm": {
+      "placeHolder": {
+        "email": "Email"
+      },
+      "button": {
+        "submit": "Submit"
+      }
+    }
+  },
+  "resetPassword": {
+    "title": {
+      "sub": "Create a new password."
+    },
+    "resetPasswordForm": {
+      "placeHolder": {
+        "password": "Password"
+      },
       "button": {
         "submit": "Submit"
       }
     }
   },
   "error": {
-    "invalidCredentials": {
-      "general": "The chosen credentials are not correct. You can <0>sign up here</0> or <1>create a new password</1>"
+    "general": {
+      "serverError": "Server error. Please try again later",
+      "invalidCredentials": "The credentials provided are not correct. You can <0>sign in here</0> or <1>create a new password</1>"
     },
-    "emailInvalid": {
-      "email": "Enter a valid email address."
+    "email": {
+      "emailInvalid": "Enter a valid email address.",
+      "emailTaken": "An account with this email address already exists"
     },
-    "usernameRequired": {
-      "username": "Enter a username."
+    "username": {
+      "usernameInvalid": "The username can only contain letters and numbers",
+      "usernameTaken": "An account with this username already exists"
     },
-    "passwordLength": {
-      "password": "The password must be at least 8 characters long."
-    },
-    "emailTaken": {
-      "email": "An account with this email address already exists."
-    },
-    "usernameTaken": {
-      "username": "An account with this username already exists."
+    "password": {
+      "passwordLength": "The password must be at least 8 characters long"
     }
   }
 }

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useMutation } from "react-query";
 import { UseFormSetError } from "react-hook-form";
-import { generateTranslationKey } from "../utils";
+import { errorSerializer } from "../serializer";
 
 interface ForgotPasswordFormValues {
   email: string;
@@ -18,22 +18,7 @@ export const useForgotPassword = (
       ),
     {
       onError: (error: any) => {
-        if (Array.isArray(error.response?.data)) {
-          error.response.data.forEach(
-            (err: { errorCode: string; location: string; type: string }) => {
-              const { type, errorCode, location } = err;
-              const translationKey = generateTranslationKey(
-                errorCode,
-                location,
-                type
-              );
-              setError(location as keyof ForgotPasswordFormValues, {
-                type: "manual",
-                message: translationKey,
-              });
-            }
-          );
-        }
+        errorSerializer<ForgotPasswordFormValues>(error, setError);
       },
     }
   );

@@ -1,8 +1,7 @@
 import { FormProvider, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { useForgotPassword } from "../../../hooks";
-import { InputField } from "../../molecules";
-import { Button } from "../../atoms";
+import { Button, InputField } from "../../molecules";
 
 import "./forms.styles.css";
 
@@ -18,7 +17,7 @@ export const ForgotPasswordForm: React.FC = () => {
     setError,
     formState: { errors },
   } = methods;
-  const { mutate } = useForgotPassword(setError);
+  const { mutate, isLoading } = useForgotPassword(setError);
 
   const onSubmit = (data: ForgotPasswordFormValues) => {
     mutate(data);
@@ -35,7 +34,7 @@ export const ForgotPasswordForm: React.FC = () => {
           placeholder={t("forgotPassword.forgotPasswordForm.placeHolder.email")}
           required
         />
-        <Button type="submit" action={() => console.log("hi")}>
+        <Button type="submit" isLoading={isLoading}>
           {t("forgotPassword.forgotPasswordForm.button.submit")}
         </Button>
       </form>

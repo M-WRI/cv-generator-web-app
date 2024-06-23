@@ -1,8 +1,8 @@
 import { FormProvider, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { useSignUp } from "../../../hooks";
-import { InputField } from "../../molecules";
-import { Button, ErrorMessage, Text } from "../../atoms";
+import { Button, InputField } from "../../molecules";
+import { ErrorMessage, Text } from "../../atoms";
 import { useNavigate } from "react-router-dom";
 
 import "./forms.styles.css";
@@ -23,7 +23,7 @@ export const SignUpForm: React.FC = () => {
     setError,
     formState: { errors },
   } = methods;
-  const { mutate } = useSignUp(setError);
+  const { mutate, isLoading } = useSignUp(setError);
 
   const onSubmit = (data: SignUpFormValues) => {
     mutate(data);
@@ -60,7 +60,7 @@ export const SignUpForm: React.FC = () => {
           placeholder={t("signUp.signUpForm.placeHolder.password")}
           error={errors?.password ? errors.password : undefined}
         />
-        <Button type="submit" action={() => console.log("hi")}>
+        <Button type="submit" isLoading={isLoading}>
           {t("signUp.signUpForm.button.submit")}
         </Button>
         {hasGeneralError ? (

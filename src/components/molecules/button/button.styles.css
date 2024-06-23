@@ -7,6 +7,8 @@
   border: 2px solid var(--primary-color);
   border-radius: 16px;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
 }
 
 .button.primary {

@@ -1,7 +1,6 @@
 import { FormProvider, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
-import { InputField } from "../../molecules";
-import { Button } from "../../atoms";
+import { Button, InputField } from "../../molecules";
 import { useResetPassword } from "../../../hooks/useResetPassword";
 import { useParams } from "react-router-dom";
 
@@ -16,7 +15,7 @@ export const ResetPasswordForm: React.FC = () => {
   const { token } = useParams();
   const { t } = useTranslation();
   const { handleSubmit, setError } = methods;
-  const { mutate } = useResetPassword(setError, token);
+  const { mutate, isLoading } = useResetPassword(setError, token);
 
   const onSubmit = (data: ResetPasswordFormValues) => {
     mutate(data);
@@ -33,7 +32,7 @@ export const ResetPasswordForm: React.FC = () => {
           )}
           required
         />
-        <Button type="submit" action={() => console.log("hi")}>
+        <Button type="submit" isLoading={isLoading}>
           {t("resetPassword.resetPasswordForm.button.submit")}
         </Button>
       </form>

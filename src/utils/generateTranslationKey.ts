@@ -3,5 +3,5 @@ export const generateTranslationKey = (
   location: string,
   type: string
 ): string => {
-  return `${type}.${errorCode}.${location}`;
+  return `${type}.${location}.${errorCode}`;
 };
