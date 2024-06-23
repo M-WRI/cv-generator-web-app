@@ -32,6 +32,32 @@
       }
     }
   },
+  "forgotPassword": {
+    "title": {
+      "sub": "Password vergessen?"
+    },
+    "forgotPasswordForm": {
+      "placeHolder": {
+        "email": "E-Mail"
+      },
+      "button": {
+        "submit": "Absenden"
+      }
+    }
+  },
+  "resetPassword": {
+    "title": {
+      "sub": "Erstellen Sie ein neues Passwort."
+    },
+    "resetPasswordForm": {
+      "placeHolder": {
+        "password": "Passwort"
+      },
+      "button": {
+        "submit": "Absenden"
+      }
+    }
+  },
   "error": {
     "invalidCredentials": {
       "general": "Die gewählten Anmeldeinformationen sind nicht korrekt. Sie können sich <0>hier anmelden</0> oder <1>ein neues Passwort erstellen</1>"

@@ -1,5 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
-import { SignInPage, SignUpPage } from "../components/screens";
+import {
+  SignInPage,
+  SignUpPage,
+  ForgotPasswordPage,
+  ResetPasswordPage,
+} from "../components/screens";
 
 export const router = createBrowserRouter([
   {
@@ -9,5 +14,13 @@ export const router = createBrowserRouter([
   {
     path: "/signup",
     element: <SignUpPage />,
+  },
+  {
+    path: "/forgot-password",
+    element: <ForgotPasswordPage />,
+  },
+  {
+    path: "/reset-password/:token",
+    element: <ResetPasswordPage />,
   },
 ]);
