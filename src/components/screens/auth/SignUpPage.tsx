@@ -8,18 +8,20 @@ import "./auth.styles.css";
 export const SignUpPage: React.FC = () => {
   const { t } = useTranslation();
 
-  return (
-    <AuthLayout
-      left={
+  const layoutConfig = {
+    left: {
+      component: (
         <>
-          <Headline className="sign-up-header" level={1}>
+          <Headline className="auth-screen-header" level={1}>
             {t("signUp.title.main")}
           </Headline>
           <SignUpForm />
         </>
-      }
-      right={
-        <Headline level={2} className="sign-up-sub-header">
+      ),
+    },
+    right: {
+      component: (
+        <Headline level={2} className="auth-screen-sub-header">
           {
             <Trans
               t={t}
@@ -28,7 +30,9 @@ export const SignUpPage: React.FC = () => {
             />
           }
         </Headline>
-      }
-    />
-  );
+      ),
+    },
+  };
+
+  return <AuthLayout {...layoutConfig} />;
 };

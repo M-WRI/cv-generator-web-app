@@ -1,7 +1,8 @@
 import axios from "axios";
-import { useMutation } from "react-query";
+import { useMutation, UseMutationOptions } from "react-query";
 import { UseFormSetError } from "react-hook-form";
-import { generateTranslationKey } from "../utils";
+import { errorSerializer } from "../serializer";
+import { ServiceType } from "../types";
 
 interface SignUpFormValues {
   email: string;
@@ -9,28 +10,17 @@ interface SignUpFormValues {
   password: string;
 }
 
-export const useSignUp = (setError: UseFormSetError<SignUpFormValues>) => {
+export const useSignUp = (
+  setError: UseFormSetError<SignUpFormValues>,
+  options?: ServiceType<SignUpFormValues>
+) => {
   return useMutation(
     (signInData: SignUpFormValues) =>
       axios.post("http://localhost:8000/api/auth/signup", signInData),
     {
+      ...options,
       onError: (error: any) => {
-        if (Array.isArray(error.response?.data)) {
-          error.response.data.forEach(
-            (err: { errorCode: string; location: string; type: string }) => {
-              const { type, errorCode, location } = err;
-              const translationKey = generateTranslationKey(
-                errorCode,
-                location,
-                type
-              );
-              setError(location as keyof SignUpFormValues, {
-                type: "manual",
-                message: translationKey,
-              });
-            }
-          );
-        }
+        errorSerializer<SignUpFormValues>(error, setError);
       },
     }
   );

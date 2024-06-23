@@ -1,10 +1,10 @@
-.sign-up-header {
+.auth-screen-header {
   margin-bottom: 62px;
   color: var(--primary-color);
   text-align: center;
 }
 
-.sign-up-sub-header {
+.auth-screen-sub-header {
   color: var(--primary-color);
   width: 250px;
 }

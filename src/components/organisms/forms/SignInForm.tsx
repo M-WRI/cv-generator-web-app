@@ -1,11 +1,11 @@
 import { FormProvider, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { useSignIn } from "../../../hooks";
-import { InputField } from "../../molecules";
-import { Button, ErrorMessage, Text } from "../../atoms";
+import { Button, InputField } from "../../molecules";
+import { ErrorMessage, Text } from "../../atoms";
 import { useNavigate } from "react-router-dom";
 
-import "./signInForm.styles.css";
+import "./forms.styles.css";
 
 interface SignInFormValues {
   email: string;
@@ -21,7 +21,7 @@ export const SignInForm: React.FC = () => {
     setError,
     formState: { errors },
   } = methods;
-  const { mutate } = useSignIn(setError);
+  const { mutate, isLoading } = useSignIn(setError);
 
   const onSubmit = (data: SignInFormValues) => {
     mutate(data);
@@ -39,10 +39,7 @@ export const SignInForm: React.FC = () => {
 
   return (
     <FormProvider {...methods}>
-      <form
-        className="sign-in-form-container"
-        onSubmit={handleSubmit(onSubmit)}
-      >
+      <form className="form-container" onSubmit={handleSubmit(onSubmit)}>
         <InputField
           name="email"
           type="email"
@@ -55,7 +52,7 @@ export const SignInForm: React.FC = () => {
           placeholder={t("signIn.signInForm.placeHolder.password")}
           required
         />
-        <Button type="submit" action={() => console.log("hi")}>
+        <Button type="submit" isLoading={isLoading}>
           {t("signIn.signInForm.button.submit")}
         </Button>
         {hasGeneralError ? (
@@ -64,12 +61,12 @@ export const SignInForm: React.FC = () => {
             components={[
               <span
                 key="signup"
-                className="signup-info-link"
+                className="info-link"
                 onClick={() => redirectToSignUp()}
               />,
               <span
                 key="forgott-password"
-                className="signup-info-link"
+                className="info-link"
                 onClick={() => redirectToForgotPassword()}
               />,
             ]}
@@ -80,16 +77,16 @@ export const SignInForm: React.FC = () => {
             components={[
               <span
                 key="signup"
-                className="signup-info-link"
+                className="info-link"
                 onClick={() => redirectToSignUp()}
               />,
               <span
                 key="forgott-password"
-                className="signup-info-link"
+                className="info-link"
                 onClick={() => redirectToForgotPassword()}
               />,
             ]}
-            fontSize="xs"
+            fontSize="base"
           />
         )}
       </form>

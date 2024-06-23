@@ -8,11 +8,14 @@ import "./auth.styles.css";
 export const ResetPasswordPage: React.FC = () => {
   const { t } = useTranslation();
 
-  return (
-    <AuthLayout
-      left={<ResetPasswordForm />}
-      right={
-        <Headline level={2} className="sign-up-sub-header">
+  const layoutConfig = {
+    left: {
+      component: <ResetPasswordForm />,
+      className: "justify-center",
+    },
+    right: {
+      component: (
+        <Headline level={2} className="auth-screen-sub-header">
           {
             <Trans
               t={t}
@@ -21,7 +24,9 @@ export const ResetPasswordPage: React.FC = () => {
             />
           }
         </Headline>
-      }
-    />
-  );
+      ),
+    },
+  };
+
+  return <AuthLayout {...layoutConfig} />;
 };

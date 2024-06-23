@@ -1,11 +1,11 @@
 import { FormProvider, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { useSignUp } from "../../../hooks";
-import { InputField } from "../../molecules";
-import { Button, ErrorMessage, Text } from "../../atoms";
+import { Button, InputField } from "../../molecules";
+import { ErrorMessage, Text } from "../../atoms";
 import { useNavigate } from "react-router-dom";
 
-import "./signUpForm.styles.css";
+import "./forms.styles.css";
 
 interface SignUpFormValues {
   email: string;
@@ -23,7 +23,7 @@ export const SignUpForm: React.FC = () => {
     setError,
     formState: { errors },
   } = methods;
-  const { mutate } = useSignUp(setError);
+  const { mutate, isLoading } = useSignUp(setError);
 
   const onSubmit = (data: SignUpFormValues) => {
     mutate(data);
@@ -41,10 +41,7 @@ export const SignUpForm: React.FC = () => {
 
   return (
     <FormProvider {...methods}>
-      <form
-        className="sign-up-form-container"
-        onSubmit={handleSubmit(onSubmit)}
-      >
+      <form className="form-container" onSubmit={handleSubmit(onSubmit)}>
         <InputField
           name="email"
           type="email"
@@ -63,7 +60,7 @@ export const SignUpForm: React.FC = () => {
           placeholder={t("signUp.signUpForm.placeHolder.password")}
           error={errors?.password ? errors.password : undefined}
         />
-        <Button type="submit" action={() => console.log("hi")}>
+        <Button type="submit" isLoading={isLoading}>
           {t("signUp.signUpForm.button.submit")}
         </Button>
         {hasGeneralError ? (
@@ -72,12 +69,12 @@ export const SignUpForm: React.FC = () => {
             components={[
               <span
                 key="signup"
-                className="signup-info-link"
+                className="info-link"
                 onClick={() => redirectToSignUp()}
               />,
               <span
                 key="forgot-password"
-                className="signup-info-link"
+                className="info-link"
                 onClick={() => redirectToForgotPassword()}
               />,
             ]}
@@ -88,16 +85,16 @@ export const SignUpForm: React.FC = () => {
             components={[
               <span
                 key="signIn"
-                className="signup-info-link"
+                className="info-link"
                 onClick={() => redirectToSignUp()}
               />,
               <span
                 key="forgot-password"
-                className="signup-info-link"
+                className="info-link"
                 onClick={() => redirectToForgotPassword()}
               />,
             ]}
-            fontSize="xs"
+            fontSize="base"
           />
         )}
       </form>
