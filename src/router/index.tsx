@@ -4,7 +4,9 @@ import {
   SignUpPage,
   ForgotPasswordPage,
   ResetPasswordPage,
+  Dashboard,
 } from "../components/screens";
+import { PrivateRoute } from "../components/layout";
 
 export const router = createBrowserRouter([
   {
@@ -22,5 +24,9 @@ export const router = createBrowserRouter([
   {
     path: "/reset-password/:token",
     element: <ResetPasswordPage />,
+  },
+  {
+    path: "/dashboard",
+    element: <PrivateRoute element={Dashboard} />,
   },
 ]);

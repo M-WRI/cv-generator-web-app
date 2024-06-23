@@ -4,6 +4,7 @@ import { useSignIn } from "../../../hooks";
 import { Button, InputField } from "../../molecules";
 import { ErrorMessage, Text } from "../../atoms";
 import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 import "./forms.styles.css";
 
@@ -21,7 +22,12 @@ export const SignInForm: React.FC = () => {
     setError,
     formState: { errors },
   } = methods;
-  const { mutate, isLoading } = useSignIn(setError);
+  const { mutate, isLoading } = useSignIn(setError, {
+    onSuccess: (response: any) => {
+      Cookies.set("token", response.data.token, { expires: 7 });
+      navigate("/dashboard");
+    },
+  });
 
   const onSubmit = (data: SignInFormValues) => {
     mutate(data);
