@@ -86,7 +86,7 @@ export const SignInForm: React.FC = () => {
                 onClick={() => redirectToForgotPassword()}
               />,
             ]}
-            fontSize="xs"
+            fontSize="base"
           />
         )}
       </form>

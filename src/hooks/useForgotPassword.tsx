@@ -2,13 +2,15 @@ import axios from "axios";
 import { useMutation } from "react-query";
 import { UseFormSetError } from "react-hook-form";
 import { errorSerializer } from "../serializer";
+import { ServiceType } from "../types";
 
 interface ForgotPasswordFormValues {
   email: string;
 }
 
 export const useForgotPassword = (
-  setError: UseFormSetError<ForgotPasswordFormValues>
+  setError: UseFormSetError<ForgotPasswordFormValues>,
+  options?: ServiceType<ForgotPasswordFormValues>
 ) => {
   return useMutation(
     (forgotPasswordData: ForgotPasswordFormValues) =>
@@ -17,6 +19,7 @@ export const useForgotPassword = (
         forgotPasswordData
       ),
     {
+      ...options,
       onError: (error: any) => {
         errorSerializer<ForgotPasswordFormValues>(error, setError);
       },

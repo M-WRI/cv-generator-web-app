@@ -2,6 +2,7 @@ import axios from "axios";
 import { useMutation } from "react-query";
 import { UseFormSetError } from "react-hook-form";
 import { errorSerializer } from "../serializer";
+import { ServiceType } from "../types";
 
 interface ResetPasswordFormValues {
   password: string;
@@ -9,7 +10,8 @@ interface ResetPasswordFormValues {
 
 export const useResetPassword = (
   setError: UseFormSetError<ResetPasswordFormValues>,
-  token?: string
+  token?: string,
+  options?: ServiceType<ResetPasswordFormValues>
 ) => {
   return useMutation(
     (resetPasswordData: ResetPasswordFormValues) =>
@@ -18,6 +20,7 @@ export const useResetPassword = (
         resetPasswordData
       ),
     {
+      ...options,
       onError: (error: any) => {
         errorSerializer<ResetPasswordFormValues>(error, setError);
       },

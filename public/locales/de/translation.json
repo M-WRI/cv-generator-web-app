@@ -61,7 +61,8 @@
   "error": {
     "general": {
       "serverError": "Serverfehler. Bitte versuchen Sie es später erneut",
-      "invalidCredentials": "Die gewählten Anmeldeinformationen sind nicht korrekt. Sie können sich <0>hier anmelden</0> oder <1>ein neues Passwort erstellen</1>"
+      "invalidCredentials": "Die gewählten Anmeldeinformationen sind nicht korrekt. Sie können sich <0>hier anmelden</0> oder <1>ein neues Passwort erstellen</1>",
+      "expiredResetPasswordToken": "Der Link zum Zurücksetzen des Passworts ist abgelaufen. <0>Erstellen Sie ein neues Passwort</0>"
     },
     "email": {
       "emailInvalid": "Geben Sie eine gültige E-Mail-Adresse ein.",
