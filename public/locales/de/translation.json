@@ -58,6 +58,13 @@
       }
     }
   },
+  "dashboard": {
+    "accordionItems": {
+      "titles": {
+        "cv": "Lebenslauf"
+      }
+    }
+  },
   "error": {
     "general": {
       "serverError": "Serverfehler. Bitte versuchen Sie es später erneut",

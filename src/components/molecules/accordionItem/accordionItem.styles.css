@@ -1,0 +1,23 @@
+.accordion-list-item {
+  cursor: pointer;
+  padding: 10px;
+  border-top: 2px solid var(--black-color);
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.accordion-list-item.active {
+  color: var(--white-color);
+  background: var(--primary-color);
+  border-bottom: 2px solid var(--black-color);
+}
+
+.accordion-item-title {
+  font-weight: 400;
+}
+
+.content-container {
+  flex-grow: 1;
+  padding: 16px;
+}
