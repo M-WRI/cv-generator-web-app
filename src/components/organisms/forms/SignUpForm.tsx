@@ -1,18 +1,11 @@
 import { FormProvider, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
-import { useSignUp } from "../../../hooks";
 import { Button, InputField } from "../../molecules";
 import { ErrorMessage, Text } from "../../atoms";
 import { useNavigate } from "react-router-dom";
+import { SignUpFormValues, useSignUp } from "../../../services";
 
 import "./forms.styles.css";
-
-interface SignUpFormValues {
-  email: string;
-  username: string;
-  password: string;
-  general: string;
-}
 
 export const SignUpForm: React.FC = () => {
   const methods = useForm<SignUpFormValues>();

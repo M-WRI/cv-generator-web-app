@@ -1,5 +1,6 @@
 import React from "react";
-import { Accordion } from "../../organisms";
+import { Accordion, CVAccordionContent } from "../../organisms";
+import { Outlet } from "react-router-dom";
 import "./dashboard.styles.css";
 
 export const Dashboard: React.FC = () => {
@@ -8,7 +9,6 @@ export const Dashboard: React.FC = () => {
       id: 1,
       title: "dashboard.accordionItems.titles.cv",
       content: <CVAccordionContent />,
-      url: "/dashboard/cv",
     },
   ];
 
@@ -18,18 +18,8 @@ export const Dashboard: React.FC = () => {
         <Accordion accordionItems={accordionItems} />
       </aside>
       <main>
-        <h1>Dashboard</h1>
-        <p>Welcome to the dashboard</p>
+        <Outlet />
       </main>
-    </div>
-  );
-};
-
-const CVAccordionContent = () => {
-  return (
-    <div className="content">
-      <h1>CV Content</h1>
-      <p>This is the content for CV.</p>
     </div>
   );
 };

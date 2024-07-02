@@ -1,3 +1,2 @@
-export * from "./useSignIn";
-export * from "./useSignUp";
-export * from "./useForgotPassword";
+export * from "./useGetCvs";
+export * from "./useGetCvDetails";

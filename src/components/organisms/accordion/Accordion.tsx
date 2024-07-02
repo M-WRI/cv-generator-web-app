@@ -5,7 +5,7 @@ import "./accordion.styles.css";
 export const Accordion = ({ accordionItems }: { accordionItems: any[] }) => {
   const [activeItemId, setActiveItemId] = useState<number | null>(null);
 
-  const handleAccordionClick = (id: number, url: string) => {
+  const handleAccordionClick = (id: number) => {
     setActiveItemId((prevId) => (prevId === id ? null : id));
   };
 
@@ -14,6 +14,7 @@ export const Accordion = ({ accordionItems }: { accordionItems: any[] }) => {
       <ul className="accordion-item-list">
         {accordionItems.map((item) => (
           <AccordionItem
+            key={item.id}
             handleAccordionClick={handleAccordionClick}
             activeItemId={activeItemId}
             {...item}

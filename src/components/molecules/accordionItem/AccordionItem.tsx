@@ -20,6 +20,7 @@ export const AccordionItem = ({
   handleAccordionClick: (id: number, url: string) => void;
 }) => {
   const { t } = useTranslation();
+
   return (
     <>
       <li
