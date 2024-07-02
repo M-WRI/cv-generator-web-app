@@ -1,16 +1,11 @@
 import { FormProvider, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { Button, InputField } from "../../molecules";
-import { useResetPassword } from "../../../hooks/useResetPassword";
 import { useNavigate, useParams } from "react-router-dom";
 import { ErrorMessage } from "../../atoms";
+import { ResetPasswordFormValues, useResetPassword } from "../../../services";
 
 import "./forms.styles.css";
-
-interface ResetPasswordFormValues {
-  password: string;
-  general: string;
-}
 
 export const ResetPasswordForm: React.FC = () => {
   const methods = useForm<ResetPasswordFormValues>();

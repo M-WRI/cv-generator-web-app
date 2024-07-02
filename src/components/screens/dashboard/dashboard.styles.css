@@ -21,3 +21,10 @@
   border-radius: 4px;
   margin-top: 10px;
 }
+
+.cv-details-loading {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

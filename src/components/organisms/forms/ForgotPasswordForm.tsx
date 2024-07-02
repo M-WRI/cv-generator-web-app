@@ -1,16 +1,11 @@
 import { FormProvider, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
-import { useForgotPassword } from "../../../hooks";
 import { Button, InputField } from "../../molecules";
 import { useNavigate } from "react-router-dom";
+import { ErrorMessage } from "../../atoms";
+import { ForgotPasswordFormValues, useForgotPassword } from "../../../services";
 
 import "./forms.styles.css";
-import { ErrorMessage } from "../../atoms";
-
-interface ForgotPasswordFormValues {
-  email: string;
-  general: string;
-}
 
 export const ForgotPasswordForm: React.FC = () => {
   const methods = useForm<ForgotPasswordFormValues>();

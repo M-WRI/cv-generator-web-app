@@ -1,10 +1,11 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, Outlet } from "react-router-dom";
 import {
   SignInPage,
   SignUpPage,
   ForgotPasswordPage,
   ResetPasswordPage,
   Dashboard,
+  CvDetailsScreen,
 } from "../components/screens";
 import { PrivateRoute } from "../components/layout";
 
@@ -27,6 +28,18 @@ export const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <PrivateRoute element={Dashboard} />,
+    element: <PrivateRoute element={Outlet} />,
+    children: [
+      {
+        path: "",
+        element: <Dashboard />,
+        children: [
+          {
+            path: "cv/:id",
+            element: <CvDetailsScreen />,
+          },
+        ],
+      },
+    ],
   },
 ]);
