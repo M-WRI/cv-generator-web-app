@@ -5,7 +5,6 @@ import { ErrorMessage, Text } from "../../atoms";
 import { useNavigate } from "react-router-dom";
 import { SignUpFormValues, useSignUp } from "../../../services";
 import { errorSerializer } from "../../../serializer";
-import { ErrorResponse } from "../../../types";
 
 import "./forms.styles.css";
 
@@ -23,7 +22,7 @@ export const SignUpForm: React.FC = () => {
       onSuccess: () => {
         navigate("/");
       },
-      onError: (error: ErrorResponse) => {
+      onError: (error) => {
         errorSerializer<SignUpFormValues>(error, setError);
       },
     },

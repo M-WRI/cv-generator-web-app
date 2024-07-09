@@ -1,13 +1,11 @@
-import axios from "axios";
-import { useMutation } from "react-query";
-import { UseFormSetError } from "react-hook-form";
-import { errorSerializer } from "../../serializer";
-import { IRequestPost, ServiceType, TMutationOptions } from "../../types";
+import { IRequestPost, TMutationOptions } from "../../types";
 import { usePost } from "../../api/dataProvider";
 import {
   ForgotPasswordFormValues,
   ResetPasswordFormValues,
+  SignInFormResponse,
   SignInFormValues,
+  SignUpFormReponse,
   SignUpFormValues,
 } from "./types";
 
@@ -41,6 +39,7 @@ export const useResetPassword = ({
     options,
     url: `http://localhost:8000/api/auth/reset-password/${token}`,
   });
+
   const resetPassword = ({
     variables,
     ...rest
@@ -54,12 +53,13 @@ export const useResetPassword = ({
 export const useSignUp = ({
   options,
 }: {
-  options: TMutationOptions<SignUpFormValues>;
+  options: TMutationOptions<SignUpFormValues, SignUpFormReponse>;
 }) => {
-  const { mutate, ...rest } = usePost<SignUpFormValues>({
+  const { mutate, ...rest } = usePost<SignUpFormValues, SignUpFormReponse>({
     options,
     url: "http://localhost:8000/api/auth/signup",
   });
+
   const signUp = ({ variables, ...rest }: IRequestPost<SignUpFormValues>) => {
     mutate({ ...rest, variables });
   };
@@ -70,9 +70,9 @@ export const useSignUp = ({
 export const useSignIn = ({
   options,
 }: {
-  options: TMutationOptions<SignInFormValues>;
+  options: TMutationOptions<SignInFormValues, SignInFormResponse>;
 }) => {
-  const { mutate, ...rest } = usePost<SignInFormValues>({
+  const { mutate, ...rest } = usePost<SignInFormValues, SignInFormResponse>({
     options,
     url: "http://localhost:8000/api/auth/signin",
   });

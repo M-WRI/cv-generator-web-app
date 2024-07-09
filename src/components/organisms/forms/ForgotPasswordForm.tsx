@@ -23,7 +23,7 @@ export const ForgotPasswordForm: React.FC = () => {
         onSuccess: () => {
           navigate("/");
         },
-        onError: (error: any) => {
+        onError: (error) => {
           errorSerializer<ForgotPasswordFormValues>(error, setError);
         },
       },

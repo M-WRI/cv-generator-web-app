@@ -28,11 +28,11 @@ export const axiosGet = async <T>(
   return response.data;
 };
 
-export const axiosPost = async <T>(
+export const axiosPost = async <TVariables extends any, TResponse = TVariables>(
   url: string,
-  data: T,
+  data: TVariables,
   headers: Record<string, string> = {}
-): Promise<T> => {
-  const response = await axiosInstance.post<T>(url, data, { headers });
+): Promise<TResponse> => {
+  const response = await axiosInstance.post<TResponse>(url, data, { headers });
   return response.data;
 };

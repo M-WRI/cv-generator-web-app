@@ -23,7 +23,7 @@ export const ResetPasswordForm: React.FC = () => {
       token: token ?? "",
       options: {
         onSuccess: () => navigate("/"),
-        onError: (error: any) => {
+        onError: (error) => {
           errorSerializer<ResetPasswordFormValues>(error, setError);
         },
       },

@@ -9,11 +9,10 @@ export type TQueryOptions<SR> = UseQueryOptions<
   TQueryKey
 >;
 
-export type TMutationOptions<TVariables> = UseMutationOptions<
+export type TMutationOptions<
   TVariables,
-  ErrorResponse,
-  IRequestPost<TVariables>
->;
+  TResponse = TVariables
+> = UseMutationOptions<TResponse, ErrorResponse, IRequestPost<TVariables>>;
 
 export interface IRequestPost<V> {
   variables: V;
