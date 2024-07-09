@@ -1,82 +1,86 @@
-import axios from "axios";
-import { useMutation } from "react-query";
-import { UseFormSetError } from "react-hook-form";
-import { errorSerializer } from "../../serializer";
-import { ServiceType } from "../../types";
+import { IRequestPost, TMutationOptions } from "../../types";
+import { usePost } from "../../api/dataProvider";
 import {
   ForgotPasswordFormValues,
   ResetPasswordFormValues,
+  SignInFormResponse,
   SignInFormValues,
+  SignUpFormReponse,
   SignUpFormValues,
 } from "./types";
 
-export const useForgotPassword = (
-  setError: UseFormSetError<ForgotPasswordFormValues>,
-  options?: ServiceType<ForgotPasswordFormValues>
-) => {
-  return useMutation(
-    (forgotPasswordData: ForgotPasswordFormValues) =>
-      axios.post(
-        "http://localhost:8000/api/auth/forgot-password",
-        forgotPasswordData
-      ),
-    {
-      ...options,
-      onError: (error: any) => {
-        errorSerializer<ForgotPasswordFormValues>(error, setError);
-      },
-    }
-  );
+export const useForgotPassword = ({
+  options,
+}: {
+  options: TMutationOptions<ForgotPasswordFormValues>;
+}) => {
+  const { mutate, ...rest } = usePost<ForgotPasswordFormValues>({
+    options,
+    url: "http://localhost:8000/api/auth/forgot-password",
+  });
+
+  const forgotPassword = ({
+    variables,
+    ...rest
+  }: IRequestPost<ForgotPasswordFormValues>) => {
+    mutate({ ...rest, variables });
+  };
+
+  return { forgotPassword, ...rest };
 };
 
-export const useResetPassword = (
-  setError: UseFormSetError<ResetPasswordFormValues>,
-  token?: string,
-  options?: ServiceType<ResetPasswordFormValues>
-) => {
-  return useMutation(
-    (resetPasswordData: ResetPasswordFormValues) =>
-      axios.post(
-        `http://localhost:8000/api/auth/reset-password/${token}`,
-        resetPasswordData
-      ),
-    {
-      ...options,
-      onError: (error: any) => {
-        errorSerializer<ResetPasswordFormValues>(error, setError);
-      },
-    }
-  );
+export const useResetPassword = ({
+  options,
+  token,
+}: {
+  options: TMutationOptions<ResetPasswordFormValues>;
+  token: string;
+}) => {
+  const { mutate, ...rest } = usePost<ResetPasswordFormValues>({
+    options,
+    url: `http://localhost:8000/api/auth/reset-password/${token}`,
+  });
+
+  const resetPassword = ({
+    variables,
+    ...rest
+  }: IRequestPost<ResetPasswordFormValues>) => {
+    mutate({ ...rest, variables });
+  };
+
+  return { resetPassword, ...rest };
 };
 
-export const useSignIn = (
-  setError: UseFormSetError<SignInFormValues>,
-  options?: ServiceType<SignInFormValues>
-) => {
-  return useMutation(
-    (signInData: SignInFormValues) =>
-      axios.post("http://localhost:8000/api/auth/signin", signInData),
-    {
-      ...options,
-      onError: (error: any) => {
-        errorSerializer<SignInFormValues>(error, setError);
-      },
-    }
-  );
+export const useSignUp = ({
+  options,
+}: {
+  options: TMutationOptions<SignUpFormValues, SignUpFormReponse>;
+}) => {
+  const { mutate, ...rest } = usePost<SignUpFormValues, SignUpFormReponse>({
+    options,
+    url: "http://localhost:8000/api/auth/signup",
+  });
+
+  const signUp = ({ variables, ...rest }: IRequestPost<SignUpFormValues>) => {
+    mutate({ ...rest, variables });
+  };
+
+  return { signUp, ...rest };
 };
 
-export const useSignUp = (
-  setError: UseFormSetError<SignUpFormValues>,
-  options?: ServiceType<SignUpFormValues>
-) => {
-  return useMutation(
-    (signInData: SignUpFormValues) =>
-      axios.post("http://localhost:8000/api/auth/signup", signInData),
-    {
-      ...options,
-      onError: (error: any) => {
-        errorSerializer<SignUpFormValues>(error, setError);
-      },
-    }
-  );
+export const useSignIn = ({
+  options,
+}: {
+  options: TMutationOptions<SignInFormValues, SignInFormResponse>;
+}) => {
+  const { mutate, ...rest } = usePost<SignInFormValues, SignInFormResponse>({
+    options,
+    url: "http://localhost:8000/api/auth/signin",
+  });
+
+  const signIn = ({ variables, ...rest }: IRequestPost<SignInFormValues>) => {
+    mutate({ ...rest, variables });
+  };
+
+  return { signIn, ...rest };
 };

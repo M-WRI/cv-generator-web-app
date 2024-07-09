@@ -4,6 +4,7 @@ import { Button, InputField } from "../../molecules";
 import { useNavigate, useParams } from "react-router-dom";
 import { ErrorMessage } from "../../atoms";
 import { ResetPasswordFormValues, useResetPassword } from "../../../services";
+import { errorSerializer } from "../../../serializer";
 
 import "./forms.styles.css";
 
@@ -17,12 +18,20 @@ export const ResetPasswordForm: React.FC = () => {
     setError,
     formState: { errors },
   } = methods;
-  const { mutate, isLoading } = useResetPassword(setError, token, {
-    onSuccess: () => navigate("/"),
-  });
+  const { resetPassword, isLoading: resetPasswordIsLoading } = useResetPassword(
+    {
+      token: token ?? "",
+      options: {
+        onSuccess: () => navigate("/"),
+        onError: (error) => {
+          errorSerializer<ResetPasswordFormValues>(error, setError);
+        },
+      },
+    }
+  );
 
   const onSubmit = (data: ResetPasswordFormValues) => {
-    mutate(data);
+    resetPassword({ variables: data });
   };
 
   const redirectToForgotPassword = () => {
@@ -42,7 +51,7 @@ export const ResetPasswordForm: React.FC = () => {
           )}
           required
         />
-        <Button type="submit" isLoading={isLoading}>
+        <Button type="submit" isLoading={resetPasswordIsLoading}>
           {t("resetPassword.resetPasswordForm.button.submit")}
         </Button>
         {hasGeneralError && (

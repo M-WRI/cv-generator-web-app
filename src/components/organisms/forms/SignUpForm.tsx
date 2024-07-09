@@ -4,6 +4,7 @@ import { Button, InputField } from "../../molecules";
 import { ErrorMessage, Text } from "../../atoms";
 import { useNavigate } from "react-router-dom";
 import { SignUpFormValues, useSignUp } from "../../../services";
+import { errorSerializer } from "../../../serializer";
 
 import "./forms.styles.css";
 
@@ -16,10 +17,19 @@ export const SignUpForm: React.FC = () => {
     setError,
     formState: { errors },
   } = methods;
-  const { mutate, isLoading } = useSignUp(setError);
+  const { signUp, isLoading: signUpIsLoading } = useSignUp({
+    options: {
+      onSuccess: () => {
+        navigate("/");
+      },
+      onError: (error) => {
+        errorSerializer<SignUpFormValues>(error, setError);
+      },
+    },
+  });
 
   const onSubmit = (data: SignUpFormValues) => {
-    mutate(data);
+    signUp({ variables: data });
   };
 
   const redirectToSignUp = () => {
@@ -53,7 +63,7 @@ export const SignUpForm: React.FC = () => {
           placeholder={t("signUp.signUpForm.placeHolder.password")}
           error={errors?.password ? errors.password : undefined}
         />
-        <Button type="submit" isLoading={isLoading}>
+        <Button type="submit" isLoading={signUpIsLoading}>
           {t("signUp.signUpForm.button.submit")}
         </Button>
         {hasGeneralError ? (

@@ -1,16 +1,16 @@
 import { useNavigate } from "react-router-dom";
-import { useGetCv } from "../../../hooks";
 import { Headline } from "../../atoms";
+import { CVListResponse, useGetCvs } from "../../../services";
 import "./cvAccordionContent.styles.css";
 
 export const CVAccordionContent = () => {
-  const { CvList } = useGetCv();
+  const { CvList } = useGetCvs();
   const navigate = useNavigate();
 
   return (
     <div className="content">
       <ul>
-        {CvList?.data.map((cv: any) => (
+        {CvList?.map((cv: CVListResponse) => (
           <div
             key={cv.id}
             className="cv-list-item"

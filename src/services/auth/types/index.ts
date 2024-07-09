@@ -13,9 +13,18 @@ export interface SignInFormValues {
   password: string;
 }
 
+export interface SignInFormResponse {
+  token: string;
+}
+
 export interface SignUpFormValues {
   email: string;
   username: string;
   password: string;
   general?: string;
+}
+
+export interface SignUpFormReponse {
+  email: string;
+  username: string;
 }
