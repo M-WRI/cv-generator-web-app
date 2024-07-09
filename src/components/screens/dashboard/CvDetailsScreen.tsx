@@ -15,8 +15,6 @@ export const CvDetailsScreen = () => {
     id && refetch();
   }, [id]);
 
-  console.log(CvDetails, "<----- cv detauls");
-
   return (
     <>
       {CvDetailsIsFetching ? (
