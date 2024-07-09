@@ -36,7 +36,7 @@ export const useFetch = <BR extends any>({
   return context;
 };
 
-export const usePost = <TVariables extends any, TResponse = TVariables>({
+export const usePost = <TVariables, TResponse = any>({
   options,
   url,
 }: {

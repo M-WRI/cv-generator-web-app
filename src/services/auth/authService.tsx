@@ -18,6 +18,7 @@ export const useForgotPassword = ({
     options,
     url: "http://localhost:8000/api/auth/forgot-password",
   });
+
   const forgotPassword = ({
     variables,
     ...rest
