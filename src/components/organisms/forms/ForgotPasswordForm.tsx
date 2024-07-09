@@ -4,6 +4,7 @@ import { Button, InputField } from "../../molecules";
 import { useNavigate } from "react-router-dom";
 import { ErrorMessage } from "../../atoms";
 import { ForgotPasswordFormValues, useForgotPassword } from "../../../services";
+import { errorSerializer } from "../../../serializer";
 
 import "./forms.styles.css";
 
@@ -16,14 +17,20 @@ export const ForgotPasswordForm: React.FC = () => {
     setError,
     formState: { errors },
   } = methods;
-  const { mutate, isLoading } = useForgotPassword(setError, {
-    onSuccess: () => {
-      navigate("/");
-    },
-  });
+  const { forgotPassword, isLoading: forgotPasswordIsLoading } =
+    useForgotPassword({
+      options: {
+        onSuccess: () => {
+          navigate("/");
+        },
+        onError: (error: any) => {
+          errorSerializer<ForgotPasswordFormValues>(error, setError);
+        },
+      },
+    });
 
   const onSubmit = (data: ForgotPasswordFormValues) => {
-    mutate(data);
+    forgotPassword({ variables: data });
   };
 
   const hasGeneralError = errors?.general && Object.values(errors?.general);
@@ -37,7 +44,7 @@ export const ForgotPasswordForm: React.FC = () => {
           placeholder={t("forgotPassword.forgotPasswordForm.placeHolder.email")}
           required
         />
-        <Button type="submit" isLoading={isLoading}>
+        <Button type="submit" isLoading={forgotPasswordIsLoading}>
           {t("forgotPassword.forgotPasswordForm.button.submit")}
         </Button>
         {hasGeneralError && <ErrorMessage name="general" />}

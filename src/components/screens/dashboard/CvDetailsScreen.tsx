@@ -1,7 +1,7 @@
-import { useParams } from "react-router-dom";
-import { useGetCvDetails } from "../../../hooks";
 import { useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { LoadingSpinner } from "../../atoms";
+import { useGetCvDetails } from "../../../services";
 
 export const CvDetailsScreen = () => {
   const { id } = useParams<{ id: string }>();
@@ -11,11 +11,11 @@ export const CvDetailsScreen = () => {
     isFetching: CvDetailsIsFetching,
   } = useGetCvDetails({ id: id! });
 
-  console.log(CvDetails?.data, "<------- cv details");
-
   useEffect(() => {
     id && refetch();
   }, [id]);
+
+  console.log(CvDetails, "<----- cv detauls");
 
   return (
     <>
