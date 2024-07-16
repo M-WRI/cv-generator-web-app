@@ -2,7 +2,7 @@ import { FormProvider, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { Button, InputField } from "../../molecules";
 import { ErrorMessage, Text } from "../../atoms";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { SignUpFormValues, useSignUp } from "../../../services";
 import { errorSerializer } from "../../../serializer";
 
@@ -30,14 +30,6 @@ export const SignUpForm: React.FC = () => {
 
   const onSubmit = (data: SignUpFormValues) => {
     signUp({ variables: data });
-  };
-
-  const redirectToSignUp = () => {
-    navigate("/");
-  };
-
-  const redirectToForgotPassword = () => {
-    navigate("/forgot-password");
   };
 
   const hasGeneralError = errors?.general && Object.values(errors?.general);
@@ -70,15 +62,11 @@ export const SignUpForm: React.FC = () => {
           <ErrorMessage
             name="general"
             components={[
-              <span
-                key="signup"
-                className="info-link"
-                onClick={() => redirectToSignUp()}
-              />,
-              <span
+              <Link key="signup" className="info-link" to="/signup" />,
+              <Link
                 key="forgot-password"
                 className="info-link"
-                onClick={() => redirectToForgotPassword()}
+                to="/forgot-password"
               />,
             ]}
           />
@@ -86,15 +74,11 @@ export const SignUpForm: React.FC = () => {
           <Text
             translationKey="signUp.signUpForm.signInInfo"
             components={[
-              <span
-                key="signIn"
-                className="info-link"
-                onClick={() => redirectToSignUp()}
-              />,
-              <span
+              <Link key="signIn" className="info-link" to="/" />,
+              <Link
                 key="forgot-password"
                 className="info-link"
-                onClick={() => redirectToForgotPassword()}
+                to="/forgot-password"
               />,
             ]}
             fontSize="base"

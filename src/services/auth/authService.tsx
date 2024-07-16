@@ -1,7 +1,8 @@
-import { IRequestPost, TMutationOptions } from "../../types";
-import { usePost } from "../../api/dataProvider";
+import { IRequestPost, TMutationOptions, TQueryOptions } from "../../types";
+import { useFetch, usePost } from "../../api/dataProvider";
 import {
   ForgotPasswordFormValues,
+  ResendVerificationTokenFormValues,
   ResetPasswordFormValues,
   SignInFormResponse,
   SignInFormValues,
@@ -27,6 +28,26 @@ export const useForgotPassword = ({
   };
 
   return { forgotPassword, ...rest };
+};
+
+export const useResendVerificationToken = ({
+  options,
+}: {
+  options: TMutationOptions<ResendVerificationTokenFormValues>;
+}) => {
+  const { mutate, ...rest } = usePost<ResendVerificationTokenFormValues>({
+    options,
+    url: "http://localhost:8000/api/auth/resend-verification-token",
+  });
+
+  const resendVerificationToken = ({
+    variables,
+    ...rest
+  }: IRequestPost<ResendVerificationTokenFormValues>) => {
+    mutate({ ...rest, variables });
+  };
+
+  return { resendVerificationToken, ...rest };
 };
 
 export const useResetPassword = ({
@@ -83,4 +104,23 @@ export const useSignIn = ({
   };
 
   return { signIn, ...rest };
+};
+
+export const useVerifyEmail = ({
+  options,
+  token,
+}: {
+  options?: TQueryOptions<any>;
+  token: string;
+}) => {
+  const { data: verifyEmailData, ...rest } = useFetch<any>({
+    url: `http://localhost:8000/api/auth/verify/${token}`,
+    queryKey: ["verifyEmail", token],
+    options: {
+      enabled: false,
+      ...options,
+    },
+  });
+
+  return { verifyEmailData, ...rest };
 };

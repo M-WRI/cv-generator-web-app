@@ -1,0 +1,27 @@
+.status-modal-container {
+  max-width: 395px;
+  text-align: center;
+  display: grid;
+  gap: 32px;
+  justify-items: center;
+  border: 2px solid var(--primary-color);
+  border-radius: 16px;
+  padding: 16px;
+  color: var(--primary-color);
+}
+
+.status-icon {
+  font-size: var(--font-sile-2xl);
+}
+
+.modal-headline {
+  color: var(--primary-color);
+}
+
+.modal-text {
+  color: var(--black-color);
+}
+
+.modal-text.info-link {
+  color: var(--primary-color);
+}

@@ -2,7 +2,7 @@ import { FormProvider, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { Button, InputField } from "../../molecules";
 import { ErrorMessage, Text } from "../../atoms";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { SignInFormValues, useSignIn } from "../../../services";
 import { errorSerializer } from "../../../serializer";
 import Cookies from "js-cookie";
@@ -16,6 +16,7 @@ export const SignInForm: React.FC = () => {
   const {
     handleSubmit,
     setError,
+    clearErrors,
     formState: { errors },
   } = methods;
 
@@ -35,19 +36,15 @@ export const SignInForm: React.FC = () => {
     signIn({ variables: data });
   };
 
-  const redirectToSignUp = () => {
-    navigate("/signup");
-  };
-
-  const redirectToForgotPassword = () => {
-    navigate("/forgot-password");
-  };
-
   const hasGeneralError = Object.values(errors).length;
 
   return (
     <FormProvider {...methods}>
-      <form className="form-container" onSubmit={handleSubmit(onSubmit)}>
+      <form
+        className="form-container"
+        onSubmit={handleSubmit(onSubmit)}
+        onChange={() => clearErrors("general")}
+      >
         <InputField
           name="email"
           type="email"
@@ -67,15 +64,11 @@ export const SignInForm: React.FC = () => {
           <ErrorMessage
             name="general"
             components={[
-              <span
-                key="signup"
-                className="info-link"
-                onClick={() => redirectToSignUp()}
-              />,
-              <span
+              <Link key="signup" className="info-link" to="/signup" />,
+              <Link
                 key="forgott-password"
                 className="info-link"
-                onClick={() => redirectToForgotPassword()}
+                to="/forgot-password"
               />,
             ]}
           />
@@ -83,15 +76,11 @@ export const SignInForm: React.FC = () => {
           <Text
             translationKey="signIn.signInForm.registrationInfo"
             components={[
-              <span
-                key="signup"
-                className="info-link"
-                onClick={() => redirectToSignUp()}
-              />,
-              <span
+              <Link key="signup" className="info-link" to="/signup" />,
+              <Link
                 key="forgott-password"
                 className="info-link"
-                onClick={() => redirectToForgotPassword()}
+                to="/forgot-password"
               />,
             ]}
             fontSize="base"
