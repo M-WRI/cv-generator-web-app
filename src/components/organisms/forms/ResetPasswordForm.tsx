@@ -1,7 +1,7 @@
 import { FormProvider, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { Button, InputField } from "../../molecules";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { ErrorMessage } from "../../atoms";
 import { ResetPasswordFormValues, useResetPassword } from "../../../services";
 import { errorSerializer } from "../../../serializer";
@@ -34,10 +34,6 @@ export const ResetPasswordForm: React.FC = () => {
     resetPassword({ variables: data });
   };
 
-  const redirectToForgotPassword = () => {
-    navigate("/forgot-password");
-  };
-
   const hasGeneralError = errors?.general && Object.values(errors?.general);
 
   return (
@@ -58,11 +54,7 @@ export const ResetPasswordForm: React.FC = () => {
           <ErrorMessage
             name="general"
             components={[
-              <span
-                key="signIn"
-                className="info-link"
-                onClick={() => redirectToForgotPassword()}
-              />,
+              <Link key="signIn" className="info-link" to="/forgot-password" />,
             ]}
           />
         )}

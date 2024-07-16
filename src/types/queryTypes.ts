@@ -1,7 +1,7 @@
 import { UseMutationOptions, UseQueryOptions } from "react-query";
 import { ErrorResponse } from "./error";
 
-export type TQueryKey = [string, any | undefined];
+export type TQueryKey = [string[], any | undefined];
 export type TQueryOptions<SR> = UseQueryOptions<
   SR,
   ErrorResponse,

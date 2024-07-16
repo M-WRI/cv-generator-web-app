@@ -19,15 +19,19 @@ export const ErrorMessage: React.FC<ErrorMessageProps> = ({
 
   const error: any = errors[name];
 
+  if (!error || !error.message) {
+    return null;
+  }
+
   const transProps = {
     t,
     i18nKey: error.message,
     ...(components && { components }),
   };
 
-  return error ? (
+  return (
     <p className="error-text">
       <Trans {...transProps} />
     </p>
-  ) : null;
+  );
 };

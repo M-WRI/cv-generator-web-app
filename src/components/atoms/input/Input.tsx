@@ -27,6 +27,7 @@ export const Input: React.FC<InputProps> = ({
       placeholder={placeholder}
       required={required}
       className={className}
+      
       {...rest}
     />
     <div className={`border ${fieldState?.error ? "error" : ""}`} />

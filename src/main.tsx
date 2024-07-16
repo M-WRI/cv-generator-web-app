@@ -4,13 +4,16 @@ import queryClient from "./api/queryClient";
 import { QueryClientProvider } from "react-query";
 import { RouterProvider } from "react-router-dom";
 import { router } from "./router";
+import { ErrorProvider } from "./context";
 import "./i18n";
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
-    </QueryClientProvider>
+    <ErrorProvider>
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />
+      </QueryClientProvider>
+    </ErrorProvider>
   </React.StrictMode>
 );

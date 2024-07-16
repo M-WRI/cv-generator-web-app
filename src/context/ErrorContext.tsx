@@ -1,8 +1,15 @@
 import React, { createContext, useContext, useState, ReactNode } from "react";
+import { ErrorResponse } from "../types";
+import { generateTranslationKey } from "../utils";
+
+interface ErrorState {
+  error: ErrorResponse | undefined;
+  translationKey: string;
+}
 
 interface ErrorContextProps {
-  errorState: any;
-  setError: (location: string, error: any) => void;
+  errorState: ErrorState | undefined;
+  setError: (error: ErrorResponse) => void;
 }
 
 const ErrorContext = createContext<ErrorContextProps | undefined>(undefined);
@@ -18,13 +25,15 @@ export const useError = () => {
 export const ErrorProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
-  const [errorState, setErrorState] = useState<any>({});
+  const [errorState, setErrorState] = useState<ErrorState>();
 
-  const setError = (location: string, error: any) => {
-    setErrorState((prev: any) => ({
-      ...prev,
-      [location]: error,
-    }));
+  const setError = (error: ErrorResponse) => {
+    const { type, errorCode, location } = error;
+    const translationKey = generateTranslationKey(errorCode, location, type);
+    setErrorState({
+      error,
+      translationKey,
+    });
   };
 
   return (

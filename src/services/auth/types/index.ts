@@ -3,6 +3,11 @@ export interface ForgotPasswordFormValues {
   general?: string;
 }
 
+export interface ResendVerificationTokenFormValues {
+  email: string;
+  general?: string;
+}
+
 export interface ResetPasswordFormValues {
   password: string;
   general?: string;
@@ -11,6 +16,7 @@ export interface ResetPasswordFormValues {
 export interface SignInFormValues {
   email: string;
   password: string;
+  general?: string;
 }
 
 export interface SignInFormResponse {

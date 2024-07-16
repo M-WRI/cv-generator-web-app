@@ -6,6 +6,8 @@ import {
   ResetPasswordPage,
   Dashboard,
   CvDetailsScreen,
+  ResendVerificationToken,
+  VerifyEmail,
 } from "../components/screens";
 import { PrivateRoute } from "../components/layout";
 
@@ -25,6 +27,14 @@ export const router = createBrowserRouter([
   {
     path: "/reset-password/:token",
     element: <ResetPasswordPage />,
+  },
+  {
+    path: "/verify-email/:token?",
+    element: <VerifyEmail />,
+  },
+  {
+    path: "/resend-verification-token/:token?",
+    element: <ResendVerificationToken />,
   },
   {
     path: "/dashboard",
