@@ -1,16 +1,15 @@
 import { Trans, useTranslation } from "react-i18next";
 import { MdCheckCircleOutline, MdOutlineErrorOutline } from "react-icons/md";
-import { Link } from "react-router-dom";
 import styles from "./statusModal.module.css";
 
 export const StatusModal = ({
-  message,
+  translationKey,
   status,
-  token,
+  components,
 }: {
-  message?: string;
+  translationKey?: string;
   status: "error" | "success" | null;
-  token?: string;
+  components?: JSX.Element[];
 }) => {
   const { t } = useTranslation();
 
@@ -24,19 +23,7 @@ export const StatusModal = ({
   return (
     <div className={styles.statusModalContainer}>
       {statusIcon}
-      <Trans
-        t={t}
-        i18nKey={message}
-        components={[
-          <h3 key="headline" className={styles.modalHeadline} />,
-          <span className={styles.modalText} />,
-          <Link
-            key="link"
-            className="info-link"
-            to={`/resend-verification-token/${token}`}
-          />,
-        ]}
-      />
+      <Trans t={t} i18nKey={translationKey} components={components} />
     </div>
   );
 };

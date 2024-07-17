@@ -4,7 +4,6 @@
   display: grid;
   gap: 32px;
   justify-items: center;
-  border: 2px solid var(--primary-color);
   border-radius: 16px;
   padding: 16px;
   color: var(--primary-color);
@@ -12,12 +11,4 @@
 
 .statusIcon {
   font-size: var(--font-sile-2xl);
-}
-
-.modalHeadline {
-  color: var(--primary-color);
-}
-
-.modalText {
-  color: var(--black-color);
 }

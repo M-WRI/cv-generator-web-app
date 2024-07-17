@@ -2,14 +2,14 @@
   "signIn": {
     "title": {
       "main": "JOB/BLOG",
-      "sub": "Welcome back! <0>Sign in</0>"
+      "sub": "Welcome back! <0>Sign In</0>"
     },
     "signInForm": {
       "placeHolder": {
         "email": "Email",
         "password": "Password"
       },
-      "registrationInfo": "Don't have an account? <0>Register here!</0> Forgot password, create <1>a new password</1>",
+      "registrationInfo": "Don't have an account? <0>Register here!</0>. Forgot your password? <1>Create a new password</1>",
       "button": {
         "submit": "Submit"
       }
@@ -18,7 +18,7 @@
   "signUp": {
     "title": {
       "main": "JOB/BLOG",
-      "sub": "Create your <0>profile!</0>"
+      "sub": "Create your <0>Profile!</0>"
     },
     "signUpForm": {
       "placeHolder": {
@@ -26,7 +26,7 @@
         "username": "Username",
         "password": "Password"
       },
-      "signInInfo": "Already have an account? <0>Sign in here!</0> Forgot password, create <1>a new password</1>",
+      "signInInfo": "Already have an account? <0>Sign in here!</0>. Forgot your password? <1>Create a new password</1>",
       "button": {
         "submit": "Submit"
       }
@@ -34,9 +34,22 @@
   },
   "forgotPassword": {
     "title": {
-      "sub": "Forgot password?"
+      "sub": "Forgot Password?"
     },
     "forgotPasswordForm": {
+      "placeHolder": {
+        "email": "Email"
+      },
+      "button": {
+        "submit": "Submit"
+      }
+    }
+  },
+  "resendVerificationToken": {
+    "title": {
+      "sub": "New Email Verification"
+    },
+    "resendVerificationTokenForm": {
       "placeHolder": {
         "email": "Email"
       },
@@ -58,11 +71,22 @@
       }
     }
   },
+  "dashboard": {
+    "accordionItems": {
+      "titles": {
+        "cv": "Resume"
+      }
+    }
+  },
   "error": {
     "general": {
       "serverError": "Server error. Please try again later",
-      "invalidCredentials": "The selected login credentials are incorrect. You can <0>sign in here</0> or <1>create a new password</1>",
-      "expiredResetPasswordToken": "The password reset link has expired. <0>Create a new password</0>"
+      "invalidCredentials": "The provided credentials are incorrect. You can <0>sign in here</0> or <1>create a new password</1>",
+      "expiredResetPasswordToken": "The password reset link has expired. <0>Create a new password</0>",
+      "invalidVerificationToken": "<0>Invalid token</0> <1>Please check your email for the correct link.</1> <2>or register here</2>",
+      "verificationTokenExpired": "<0>Token expired</0> <1>Request a new link.</1> <2>Click here</2>",
+      "userNotFound": "There is no account with this email address",
+      "accountAlreadyVerified": "<0>Account already verified</0> <1>You can now</1> <2>log in</2>"
     },
     "email": {
       "emailInvalid": "Please enter a valid email address.",
@@ -70,10 +94,16 @@
     },
     "username": {
       "usernameInvalid": "The username can only contain letters and numbers",
-      "usernameTaken": "An account with this username already exists"
+      "usernameTaken": "An account with this username already exists",
+      "usernameRequired": "Please provide a username"
     },
     "password": {
       "passwordLength": "The password must be at least 8 characters long"
+    }
+  },
+  "success": {
+    "general": {
+      "verificationSuccessful": "<0>Email verified</0> <1>Your email address has been successfully verified. You can now</1> <2>log in</2>"
     }
   }
 }

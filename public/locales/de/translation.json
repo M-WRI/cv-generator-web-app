@@ -83,10 +83,10 @@
       "serverError": "Serverfehler. Bitte versuchen Sie es später erneut",
       "invalidCredentials": "Die gewählten Anmeldeinformationen sind nicht korrekt. Sie können sich <0>hier anmelden</0> oder <1>ein neues Passwort erstellen</1>",
       "expiredResetPasswordToken": "Der Link zum Zurücksetzen des Passworts ist abgelaufen. <0>Erstellen Sie ein neues Passwort</0>",
-      "invalidVerificationToken": "<0>Ungültiker Token</0> Bitte schauen sie in ihrem Email Postfach nach dem richtigen Link. Sie werden automatisch weitergeleitet.",
+      "invalidVerificationToken": "<0>Ungültiker Token</0> <1>Bitte schauen sie in ihrem Email Postfach nach dem richtigen Link.</1> <2>oder hier registrieren</2>",
       "verificationTokenExpired": "<0>Token Abgelaufen</0> <1>Lassen sie sich einen neuen Link zusenden.</1> <2>Clicken sie hier</2>",
       "userNotFound": "Es gibt keinen Account mit dieser E-Mail-Adresse",
-      "accountAlreadyVerified": "Ihr Account wurde bereits verifiziert. Sie können sich jetzt <0>einloggen</0>"
+      "accountAlreadyVerified": "<0>Account wurde bereits verifiziert</0> <1>Sie können sich jetzt</1> <2>einloggen</2>"
     },
     "email": {
       "emailInvalid": "Geben Sie eine gültige E-Mail-Adresse ein.",
@@ -103,7 +103,7 @@
   },
   "success": {
     "general": {
-      "verificationSuccessful": "Ihre E-Mail-Adresse wurde erfolgreich verifiziert. Sie können sich jetzt <0>ein loggen</0>"
+      "verificationSuccessful": "<0>E-Mail verifiziert</0> <1>Ihre E-Mail-Adresse wurde erfolgreich verifiziert. Sie können sich jetzt</1> <2>ein loggen</2>"
     }
   }
 }
