@@ -3,7 +3,7 @@
   border-right: 2px solid var(--black-color);
 }
 
-.accordion-item-list {
+.accordionItemList {
   height: 100%;
   display: flex;
   flex-direction: column;

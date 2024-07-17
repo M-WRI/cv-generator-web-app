@@ -2,14 +2,14 @@ import { FormProvider, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { Button, InputField } from "../../molecules";
 import { useNavigate } from "react-router-dom";
-import { ErrorMessage } from "../../atoms";
+import { InputErrorMessage } from "../../atoms";
 import {
   ResendVerificationTokenFormValues,
   useResendVerificationToken,
 } from "../../../services";
 import { errorSerializer } from "../../../serializer";
 
-import "./forms.styles.css";
+import styles from "./forms.module.css";
 
 export const ResendVerificationTokenForm: React.FC = () => {
   const methods = useForm<ResendVerificationTokenFormValues>();
@@ -42,7 +42,7 @@ export const ResendVerificationTokenForm: React.FC = () => {
 
   return (
     <FormProvider {...methods}>
-      <form className="form-container" onSubmit={handleSubmit(onSubmit)}>
+      <form className={styles.formContainer} onSubmit={handleSubmit(onSubmit)}>
         <InputField
           name="email"
           type="email"
@@ -56,7 +56,7 @@ export const ResendVerificationTokenForm: React.FC = () => {
             "resendVerificationToken.resendVerificationTokenForm.button.submit"
           )}
         </Button>
-        {hasGeneralError && <ErrorMessage name="general" />}
+        {hasGeneralError && <InputErrorMessage name="general" />}
       </form>
     </FormProvider>
   );

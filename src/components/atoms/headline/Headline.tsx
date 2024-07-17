@@ -1,5 +1,5 @@
 import React from "react";
-import "./headline.styles.css";
+import styles from "./headline.module.css";
 
 interface HeadlineProps {
   level: 1 | 2 | 3 | 4 | 5;
@@ -13,8 +13,14 @@ export const Headline: React.FC<HeadlineProps> = ({
   className,
 }) => {
   const Tag = `h${level}` as keyof JSX.IntrinsicElements;
+  const levelClass = styles[`headline${level}`];
+
   return (
-    <Tag className={`headline headline-${level} ${className ? className : ""}`}>
+    <Tag
+      className={`${styles.headline} ${levelClass} ${
+        className ? className : ""
+      }`}
+    >
       {children}
     </Tag>
   );

@@ -2,11 +2,11 @@ import { FormProvider, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { Button, InputField } from "../../molecules";
 import { useNavigate } from "react-router-dom";
-import { ErrorMessage } from "../../atoms";
+import { InputErrorMessage } from "../../atoms";
 import { ForgotPasswordFormValues, useForgotPassword } from "../../../services";
 import { errorSerializer } from "../../../serializer";
 
-import "./forms.styles.css";
+import styles from "./forms.module.css";
 
 export const ForgotPasswordForm: React.FC = () => {
   const methods = useForm<ForgotPasswordFormValues>();
@@ -37,7 +37,7 @@ export const ForgotPasswordForm: React.FC = () => {
 
   return (
     <FormProvider {...methods}>
-      <form className="form-container" onSubmit={handleSubmit(onSubmit)}>
+      <form className={styles.formContainer} onSubmit={handleSubmit(onSubmit)}>
         <InputField
           name="email"
           type="email"
@@ -47,7 +47,7 @@ export const ForgotPasswordForm: React.FC = () => {
         <Button type="submit" isLoading={forgotPasswordIsLoading}>
           {t("forgotPassword.forgotPasswordForm.button.submit")}
         </Button>
-        {hasGeneralError && <ErrorMessage name="general" />}
+        {hasGeneralError && <InputErrorMessage name="general" />}
       </form>
     </FormProvider>
   );

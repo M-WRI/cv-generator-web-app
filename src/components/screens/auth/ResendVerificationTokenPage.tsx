@@ -27,7 +27,11 @@ export const ResendVerificationToken = () => {
 
   const layoutConfig = {
     left: {
-      component: <ResendVerificationTokenForm />,
+      component: isLoadingVerifyEmail ? (
+        <LoadingSpinner />
+      ) : (
+        <ResendVerificationTokenForm />
+      ),
       className: "justify-center",
     },
     right: {
@@ -47,13 +51,5 @@ export const ResendVerificationToken = () => {
     }
   }, [token]);
 
-  return (
-    <div>
-      {isLoadingVerifyEmail ? (
-        <LoadingSpinner />
-      ) : (
-        <AuthLayout {...layoutConfig} />
-      )}
-    </div>
-  );
+  return <AuthLayout {...layoutConfig} />;
 };

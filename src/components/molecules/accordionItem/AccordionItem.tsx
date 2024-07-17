@@ -1,8 +1,8 @@
 import { ReactNode } from "react";
 import { Headline } from "../../atoms";
 import { AccordionContentContainer } from "./AccordionContentContainer";
-import "./accordionItem.styles.css";
 import { useTranslation } from "react-i18next";
+import styles from "./accordionItem.module.css";
 
 export const AccordionItem = ({
   id,
@@ -25,9 +25,11 @@ export const AccordionItem = ({
     <>
       <li
         onClick={() => handleAccordionClick(id, url)}
-        className={`accordion-list-item ${activeItemId === id ? "active" : ""}`}
+        className={`${styles.accordionListItem} ${
+          activeItemId === id ? styles.active : ""
+        }`}
       >
-        <Headline level={1} className="accordion-item-title">
+        <Headline level={1} className={styles.accordionItemTitle}>
           {t(title)}
         </Headline>
       </li>

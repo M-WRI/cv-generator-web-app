@@ -1,14 +1,14 @@
 import React, { ReactElement } from "react";
 import { useFormContext } from "react-hook-form";
 import { Trans, useTranslation } from "react-i18next";
-import "./styles.errorMessage.css";
+import styles from "./errorMessage.module.css";
 
-interface ErrorMessageProps {
+interface InputErrorMessageProps {
   name: string;
   components?: ReactElement[];
 }
 
-export const ErrorMessage: React.FC<ErrorMessageProps> = ({
+export const InputErrorMessage: React.FC<InputErrorMessageProps> = ({
   name,
   components,
 }) => {
@@ -30,7 +30,7 @@ export const ErrorMessage: React.FC<ErrorMessageProps> = ({
   };
 
   return (
-    <p className="error-text">
+    <p className={styles.errorText}>
       <Trans {...transProps} />
     </p>
   );

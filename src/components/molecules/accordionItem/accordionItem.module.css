@@ -1,4 +1,4 @@
-.accordion-list-item {
+.accordionListItem {
   cursor: pointer;
   padding: 10px;
   border-top: 2px solid var(--black-color);
@@ -7,16 +7,16 @@
   flex-shrink: 0;
 }
 
-.accordion-list-item.active {
+.accordionListItem.active {
   color: var(--white-color);
   background: var(--primary-color);
   border-bottom: 2px solid var(--black-color);
 }
 
-.accordion-item-title {
+.accordionItemTitle {
   font-weight: 400;
 }
 
-.content-container {
+.contentContainer {
   flex-grow: 1;
 }

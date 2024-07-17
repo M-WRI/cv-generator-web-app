@@ -1,15 +1,15 @@
 .text {
-  font-family: var(--secondary-font);
+  font-family: var(--primary-font);
 }
 
-.text-base {
+.textbase {
   font-size: var(--font-size-base);
 }
 
-.text-sm {
+.textsm {
   font-size: var(--font-size-sm);
 }
 
-.text-xs {
+.textxs {
   font-size: var(--font-size-xs);
 }
