@@ -1,14 +1,15 @@
 import React from "react";
 import { ControllerFieldState } from "react-hook-form";
-import "./input.styles.css";
+import styles from "./input.module.css";
 
 interface InputProps {
   id: string;
   type: string;
   placeholder?: string;
   required?: boolean;
-  className?: string;
   fieldState?: ControllerFieldState;
+  isDirty?: boolean;
+  isError?: boolean;
 }
 
 export const Input: React.FC<InputProps> = ({
@@ -16,8 +17,9 @@ export const Input: React.FC<InputProps> = ({
   type,
   placeholder,
   required,
-  className,
   fieldState,
+  isDirty,
+  isError,
   ...rest
 }) => (
   <>
@@ -26,11 +28,12 @@ export const Input: React.FC<InputProps> = ({
       type={type}
       placeholder={placeholder}
       required={required}
-      className={className}
-      
+      className={`${styles.input} ${isDirty ? styles.dirty : ""} ${
+        isError ? styles.error : ""
+      }`}
       {...rest}
     />
-    <div className={`border ${fieldState?.error ? "error" : ""}`} />
+    <div className={`${styles.border} ${fieldState?.error ? "error" : ""}`} />
   </>
 );
 

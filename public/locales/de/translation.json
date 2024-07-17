@@ -84,7 +84,9 @@
       "invalidCredentials": "Die gewählten Anmeldeinformationen sind nicht korrekt. Sie können sich <0>hier anmelden</0> oder <1>ein neues Passwort erstellen</1>",
       "expiredResetPasswordToken": "Der Link zum Zurücksetzen des Passworts ist abgelaufen. <0>Erstellen Sie ein neues Passwort</0>",
       "invalidVerificationToken": "<0>Ungültiker Token</0> Bitte schauen sie in ihrem Email Postfach nach dem richtigen Link. Sie werden automatisch weitergeleitet.",
-      "verificationTokenExpired": "<0>Token Abgelaufen</0> <1>Lassen sie sich einen neuen Link zusenden.</1> <2>Clicken sie hier</2>"
+      "verificationTokenExpired": "<0>Token Abgelaufen</0> <1>Lassen sie sich einen neuen Link zusenden.</1> <2>Clicken sie hier</2>",
+      "userNotFound": "Es gibt keinen Account mit dieser E-Mail-Adresse",
+      "accountAlreadyVerified": "Ihr Account wurde bereits verifiziert. Sie können sich jetzt <0>einloggen</0>"
     },
     "email": {
       "emailInvalid": "Geben Sie eine gültige E-Mail-Adresse ein.",

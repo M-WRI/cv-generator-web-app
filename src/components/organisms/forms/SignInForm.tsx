@@ -1,13 +1,13 @@
 import { FormProvider, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { Button, InputField } from "../../molecules";
-import { ErrorMessage, Text } from "../../atoms";
+import { InputErrorMessage, Text } from "../../atoms";
 import { Link, useNavigate } from "react-router-dom";
 import { SignInFormValues, useSignIn } from "../../../services";
 import { errorSerializer } from "../../../serializer";
 import Cookies from "js-cookie";
 
-import "./forms.styles.css";
+import styles from "./forms.module.css";
 
 export const SignInForm: React.FC = () => {
   const methods = useForm<SignInFormValues>();
@@ -41,7 +41,7 @@ export const SignInForm: React.FC = () => {
   return (
     <FormProvider {...methods}>
       <form
-        className="form-container"
+        className={styles.formContainer}
         onSubmit={handleSubmit(onSubmit)}
         onChange={() => clearErrors("general")}
       >
@@ -61,7 +61,7 @@ export const SignInForm: React.FC = () => {
           {t("signIn.signInForm.button.submit")}
         </Button>
         {hasGeneralError ? (
-          <ErrorMessage
+          <InputErrorMessage
             name="general"
             components={[
               <Link key="signup" className="info-link" to="/signup" />,

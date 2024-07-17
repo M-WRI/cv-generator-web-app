@@ -1,4 +1,4 @@
-export * from "./errorMessage";
+export * from "./inputErrorMessage";
 export * from "./headline";
 export * from "./input";
 export * from "./text";

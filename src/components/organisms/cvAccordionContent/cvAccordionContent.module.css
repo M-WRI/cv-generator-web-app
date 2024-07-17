@@ -1,15 +1,15 @@
-.cv-list-item {
+.cvListItem {
   padding: 16px;
   border-bottom: 2px solid var(--black-color);
   cursor: pointer;
 }
 
-.cv-list-item:hover,
-.cv-list-item.active {
+.cvListItem:hover,
+.cvListItem.active {
   color: var(--white-color);
   background: var(--primary-color);
 }
 
-.cv-list-item-title {
+.cvListItemTitle {
   font-weight: 400;
 }

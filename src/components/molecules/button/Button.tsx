@@ -1,5 +1,5 @@
 import { LoadingSpinner } from "../../atoms";
-import "./button.styles.css";
+import styles from "./button.module.css";
 
 export const Button = ({
   type,
@@ -14,9 +14,14 @@ export const Button = ({
   isLoading?: boolean;
   action?: () => void;
 }) => {
+  const styleMapping = {
+    outline: styles.outline,
+    primary: styles.primary,
+  };
+
   return (
     <button
-      className={`button ${style}`}
+      className={`${styles.button} ${styleMapping[style]}`}
       type={type}
       onClick={() => action && action()}
       disabled={isLoading}

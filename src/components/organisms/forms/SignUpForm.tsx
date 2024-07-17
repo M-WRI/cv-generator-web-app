@@ -1,12 +1,12 @@
 import { FormProvider, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { Button, InputField } from "../../molecules";
-import { ErrorMessage, Text } from "../../atoms";
+import { InputErrorMessage, Text } from "../../atoms";
 import { Link, useNavigate } from "react-router-dom";
 import { SignUpFormValues, useSignUp } from "../../../services";
 import { errorSerializer } from "../../../serializer";
 
-import "./forms.styles.css";
+import styles from "./forms.module.css";
 
 export const SignUpForm: React.FC = () => {
   const methods = useForm<SignUpFormValues>();
@@ -36,7 +36,7 @@ export const SignUpForm: React.FC = () => {
 
   return (
     <FormProvider {...methods}>
-      <form className="form-container" onSubmit={handleSubmit(onSubmit)}>
+      <form className={styles.formContainer} onSubmit={handleSubmit(onSubmit)}>
         <InputField
           name="email"
           type="email"
@@ -59,7 +59,7 @@ export const SignUpForm: React.FC = () => {
           {t("signUp.signUpForm.button.submit")}
         </Button>
         {hasGeneralError ? (
-          <ErrorMessage
+          <InputErrorMessage
             name="general"
             components={[
               <Link key="signup" className="info-link" to="/signup" />,

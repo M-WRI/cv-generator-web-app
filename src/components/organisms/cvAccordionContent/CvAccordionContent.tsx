@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { Headline } from "../../atoms";
 import { CVListResponse, useGetCvs } from "../../../services";
-import "./cvAccordionContent.styles.css";
+import styles from "./cvAccordionContent.module.css";
 
 export const CVAccordionContent = () => {
   const { CvList } = useGetCvs();
@@ -13,10 +13,10 @@ export const CVAccordionContent = () => {
         {CvList?.map((cv: CVListResponse) => (
           <div
             key={cv.id}
-            className="cv-list-item"
+            className={styles.cvListItem}
             onClick={() => navigate(`cv/${cv.id}`)}
           >
-            <Headline level={5} className="cv-list-item-title">
+            <Headline level={5} className={styles.cvListItemTitle}>
               {cv.title}
             </Headline>
           </div>

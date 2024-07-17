@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { LoadingSpinner } from "../../atoms";
 import { useError } from "../../../context";
 import { StatusModal } from "../../molecules";
+import { AuthLayout } from "../../layout";
 
 export const VerifyEmail = () => {
   const navigate = useNavigate();
@@ -25,6 +26,17 @@ export const VerifyEmail = () => {
     ? errorState?.translationKey
     : "";
 
+  const layoutConfig = {
+    left: {
+      component: isLoadingVerifyEmail ? (
+        <LoadingSpinner />
+      ) : (
+        <StatusModal status={status} message={message} token={token} />
+      ),
+      className: "justify-center",
+    },
+  };
+
   useEffect(() => {
     if (token) {
       fetchVerifactionEmail();
@@ -33,15 +45,7 @@ export const VerifyEmail = () => {
     }
   }, [token]);
 
-  return (
-    <div>
-      {isLoadingVerifyEmail ? (
-        <LoadingSpinner />
-      ) : (
-        <StatusModal status={status} message={message} token={token} />
-      )}
-    </div>
-  );
+  return <AuthLayout {...layoutConfig} />;
 };
 
 export default VerifyEmail;

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { AccordionItem } from "../../molecules";
-import "./accordion.styles.css";
+import styles from "./accordion.module.css";
 
 export const Accordion = ({ accordionItems }: { accordionItems: any[] }) => {
   const [activeItemId, setActiveItemId] = useState<number | null>(null);
@@ -10,8 +10,8 @@ export const Accordion = ({ accordionItems }: { accordionItems: any[] }) => {
   };
 
   return (
-    <nav className={`accordion`}>
-      <ul className="accordion-item-list">
+    <nav className={styles.accordion}>
+      <ul className={styles.accordionItemList}>
         {accordionItems.map((item) => (
           <AccordionItem
             key={item.id}

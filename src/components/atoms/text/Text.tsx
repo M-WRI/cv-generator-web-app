@@ -1,17 +1,25 @@
 import { Trans, useTranslation } from "react-i18next";
 import { ReactElement } from "react";
-import "./text.styles.css";
+import styles from "./text.module.css";
 
-export const Text = ({
-  translationKey,
-  components,
-  fontSize = "base",
-}: {
+interface TextProps {
   translationKey: string;
   components?: ReactElement[];
   fontSize?: "base" | "sm" | "xs";
+}
+
+export const Text: React.FC<TextProps> = ({
+  translationKey,
+  components,
+  fontSize = "base",
 }) => {
   const { t } = useTranslation();
+
+  const fontSizeClass = {
+    base: styles.textBase,
+    sm: styles.textSm,
+    xs: styles.textXs,
+  }[fontSize];
 
   const transProps = {
     t,
@@ -20,7 +28,7 @@ export const Text = ({
   };
 
   return (
-    <p className={`tesxt text-${fontSize}`}>
+    <p className={`${styles.text} ${fontSizeClass}`}>
       <Trans {...transProps} />
     </p>
   );

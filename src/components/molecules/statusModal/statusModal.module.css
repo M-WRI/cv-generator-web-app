@@ -1,4 +1,4 @@
-.status-modal-container {
+.statusModalContainer {
   max-width: 395px;
   text-align: center;
   display: grid;
@@ -10,18 +10,14 @@
   color: var(--primary-color);
 }
 
-.status-icon {
+.statusIcon {
   font-size: var(--font-sile-2xl);
 }
 
-.modal-headline {
+.modalHeadline {
   color: var(--primary-color);
 }
 
-.modal-text {
+.modalText {
   color: var(--black-color);
-}
-
-.modal-text.info-link {
-  color: var(--primary-color);
 }
