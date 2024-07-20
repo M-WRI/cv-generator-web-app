@@ -1,6 +1,5 @@
 import { Trans, useTranslation } from "react-i18next";
 import { MdCheckCircleOutline, MdOutlineErrorOutline } from "react-icons/md";
-import styles from "./statusModal.module.css";
 
 export const StatusModal = ({
   translationKey,
@@ -15,13 +14,13 @@ export const StatusModal = ({
 
   const statusIcon =
     status === "error" ? (
-      <MdOutlineErrorOutline className={styles.statusIcon} />
+      <MdOutlineErrorOutline className="text-2xl" />
     ) : status === "success" ? (
-      <MdCheckCircleOutline className={styles.statusIcon} />
+      <MdCheckCircleOutline className="text-2xl" />
     ) : null;
 
   return (
-    <div className={styles.statusModalContainer}>
+    <div className="max-w-[395px] text-primary-500 text-center grid gap-8 items-center p-4">
       {statusIcon}
       <Trans t={t} i18nKey={translationKey} components={components} />
     </div>

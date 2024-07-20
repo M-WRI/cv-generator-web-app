@@ -1,5 +1,9 @@
 @import url("./fonts.css");
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --primary-color: #2710ea;
   --error-color: #f44336;
@@ -25,40 +29,41 @@
 }
 
 html {
-  font-size: var(--font-size-base);
+  font-size: 18px; /* Default font size for the entire document */
 }
 
 body {
-  font-family: var(--primary-font);
+  @apply font-primary;
+}
+
+p {
+  @apply text-base;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  @apply font-bold;
 }
 
 h1 {
-  font-size: var(--font-sile-3xl);
+  @apply text-3xl;
 }
 
 h2 {
-  font-size: var(--font-sile-2xl);
+  @apply text-2xl;
 }
 
 h3 {
-  font-size: var(--font-sile-xl);
+  @apply text-xl;
 }
 
 h4 {
-  font-size: var(--font-sile-l);
+  @apply text-l;
 }
 
 h5 {
-  font-size: var(--font-size-base);
-}
-
-.underline {
-  text-decoration: underline;
-}
-
-.info-link {
-  font-weight: 600;
-  color: var(--primary-color);
-  text-decoration: underline;
-  cursor: pointer;
+  @apply text-base;
 }

@@ -2,11 +2,10 @@ import { FormProvider, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { Button, InputField } from "../../molecules";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { InputErrorMessage } from "../../atoms";
+import { Text, FormContainer } from "../../atoms";
 import { ResetPasswordFormValues, useResetPassword } from "../../../services";
 import { errorSerializer } from "../../../serializer";
 
-import styles from "./forms.module.css";
 
 export const ResetPasswordForm: React.FC = () => {
   const methods = useForm<ResetPasswordFormValues>();
@@ -38,7 +37,7 @@ export const ResetPasswordForm: React.FC = () => {
 
   return (
     <FormProvider {...methods}>
-      <form className={styles.formContainer} onSubmit={handleSubmit(onSubmit)}>
+      <FormContainer onSubmit={handleSubmit(onSubmit)}>
         <InputField
           name="newPassword"
           type="password"
@@ -51,14 +50,15 @@ export const ResetPasswordForm: React.FC = () => {
           {t("resetPassword.resetPasswordForm.button.submit")}
         </Button>
         {hasGeneralError && (
-          <InputErrorMessage
-            name="general"
+          <Text
+            className="text-error-500"
+            translationKey={errors?.general?.message}
             components={[
               <Link key="signIn" className="info-link" to="/forgot-password" />,
             ]}
           />
         )}
-      </form>
+      </FormContainer>
     </FormProvider>
   );
 };

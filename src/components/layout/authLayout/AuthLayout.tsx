@@ -1,5 +1,4 @@
 import React from "react";
-import "./authLayout.styles.css";
 
 export const AuthLayout = ({
   left,
@@ -15,15 +14,19 @@ export const AuthLayout = ({
   };
 }) => {
   return (
-    <div className="auth-layout-container">
+    <div className="flex justify-around items-center h-screen gap-8 px-4">
       <section
-        className={`left-section ${left?.className ? left.className : ""}`}
+        className={`w-full max-w-[300px] ${
+          left?.className ? left.className : ""
+        }`}
       >
         {left.component}
       </section>
       {right && (
         <section
-          className={`right-section ${right?.className ? right.className : ""}`}
+          className={`w-full max-w-[300px] hidden md:block ${
+            right?.className ? right.className : ""
+          }`}
         >
           {right.component}
         </section>

@@ -1,5 +1,4 @@
 import { LoadingSpinner } from "../../atoms";
-import styles from "./button.module.css";
 
 export const Button = ({
   type,
@@ -15,13 +14,14 @@ export const Button = ({
   action?: () => void;
 }) => {
   const styleMapping = {
-    outline: styles.outline,
-    primary: styles.primary,
+    outline:
+      "bg-white text-primary-500 border-2 border-primary-500 hover:bg-primary-500 hover:text-white",
+    primary: "bg-primary-500 text-white hoover:bg-white hover:text-primary-500",
   };
 
   return (
     <button
-      className={`${styles.button} ${styleMapping[style]}`}
+      className={`py-4 w-full font-bold rounded-2xl cursor-pointer flex justify-center transition-all ${styleMapping[style]}`}
       type={type}
       onClick={() => action && action()}
       disabled={isLoading}

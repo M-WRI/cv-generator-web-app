@@ -1,8 +1,6 @@
 import React from "react";
 import { Controller, FieldError, useFormContext } from "react-hook-form";
-import { Input } from "../../atoms";
-import { useTranslation } from "react-i18next";
-import styles from "./inputFields.module.css";
+import { Input, Text } from "../../atoms";
 
 interface InputFieldProps {
   name: string;
@@ -21,14 +19,13 @@ export const InputField: React.FC<InputFieldProps> = ({
   required,
 }) => {
   const { control } = useFormContext();
-  const { t } = useTranslation();
 
   return (
     <Controller
       name={name}
       control={control}
       rules={{ required }}
-      render={({ field, fieldState }) => {
+      render={({ field }) => {
         return (
           <div>
             <Input
@@ -38,11 +35,14 @@ export const InputField: React.FC<InputFieldProps> = ({
               required={required}
               isDirty={field.value ? true : false}
               isError={error ? true : false}
-              fieldState={fieldState}
               {...field}
             />
+
             {error?.message && (
-              <p className={styles.errorMessage}>{t(error.message)}</p>
+              <Text
+                translationKey={error?.message}
+                className="text-sm text-error-500 mt-2"
+              />
             )}
           </div>
         );
