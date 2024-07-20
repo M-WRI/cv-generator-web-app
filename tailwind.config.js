@@ -5,8 +5,12 @@ export default {
     extend: {
       colors: {
         black: "#000000",
-        primary: "#1800E9",
-        error: "#F44336",
+        primary: {
+          500: "#1800E9",
+        },
+        error: {
+          500: "#F44336",
+        },
       },
       fontSize: {
         xs: "12px",

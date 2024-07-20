@@ -1,12 +1,10 @@
 import { FormProvider, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { Button, InputField } from "../../molecules";
-import { InputErrorMessage, Text } from "../../atoms";
+import { FormContainer, Text } from "../../atoms";
 import { Link, useNavigate } from "react-router-dom";
 import { SignUpFormValues, useSignUp } from "../../../services";
 import { errorSerializer } from "../../../serializer";
-
-import styles from "./forms.module.css";
 
 export const SignUpForm: React.FC = () => {
   const methods = useForm<SignUpFormValues>();
@@ -36,7 +34,7 @@ export const SignUpForm: React.FC = () => {
 
   return (
     <FormProvider {...methods}>
-      <form className={styles.formContainer} onSubmit={handleSubmit(onSubmit)}>
+      <FormContainer onSubmit={handleSubmit(onSubmit)}>
         <InputField
           name="email"
           type="email"
@@ -59,13 +57,18 @@ export const SignUpForm: React.FC = () => {
           {t("signUp.signUpForm.button.submit")}
         </Button>
         {hasGeneralError ? (
-          <InputErrorMessage
-            name="general"
+          <Text
+            className="text-error-500"
+            translationKey={errors?.general?.message}
             components={[
-              <Link key="signup" className="info-link" to="/signup" />,
+              <Link
+                key="signup"
+                className="text-primary-500 font-bold underline"
+                to="/signup"
+              />,
               <Link
                 key="forgot-password"
-                className="info-link"
+                className="text-primary-500 font-bold underline"
                 to="/forgot-password"
               />,
             ]}
@@ -74,17 +77,20 @@ export const SignUpForm: React.FC = () => {
           <Text
             translationKey="signUp.signUpForm.signInInfo"
             components={[
-              <Link key="signIn" className="info-link" to="/" />,
+              <Link
+                key="signIn"
+                className="text-primary-500 font-bold underline"
+                to="/"
+              />,
               <Link
                 key="forgot-password"
-                className="info-link"
+                className="text-primary-500 font-bold underline"
                 to="/forgot-password"
               />,
             ]}
-            fontSize="base"
           />
         )}
-      </form>
+      </FormContainer>
     </FormProvider>
   );
 };

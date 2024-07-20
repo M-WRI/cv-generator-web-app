@@ -1,13 +1,10 @@
 import React from "react";
-import { ControllerFieldState } from "react-hook-form";
-import styles from "./input.module.css";
 
 interface InputProps {
   id: string;
   type: string;
   placeholder?: string;
   required?: boolean;
-  fieldState?: ControllerFieldState;
   isDirty?: boolean;
   isError?: boolean;
 }
@@ -17,24 +14,37 @@ export const Input: React.FC<InputProps> = ({
   type,
   placeholder,
   required,
-  fieldState,
   isDirty,
   isError,
   ...rest
-}) => (
-  <>
-    <input
-      id={id}
-      type={type}
-      placeholder={placeholder}
-      required={required}
-      className={`${styles.input} ${isDirty ? styles.dirty : ""} ${
-        isError ? styles.error : ""
-      }`}
-      {...rest}
-    />
-    <div className={`${styles.border} ${fieldState?.error ? "error" : ""}`} />
-  </>
-);
+}) => {
+  return (
+    <div className="group">
+      <input
+        id={id}
+        type={type}
+        placeholder={placeholder}
+        required={required}
+        className={` mb-4 border-none outline-none transition-all w-full ${
+          isError
+            ? "text-error-500 placeholder-error-500"
+            : isDirty
+            ? "text-primary-500"
+            : "text-black placeholder-black group-hover:placeholder-primary-500"
+        }`}
+        {...rest}
+      />
+      <div
+        className={`w-full h-[2px] transition-all ${
+          isError
+            ? "bg-error-500"
+            : isDirty
+            ? "bg-primary-500"
+            : "bg-black group-hover:bg-primary-500"
+        }`}
+      />
+    </div>
+  );
+};
 
 export default Input;
