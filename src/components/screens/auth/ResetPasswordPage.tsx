@@ -3,7 +3,6 @@ import { Trans, useTranslation } from "react-i18next";
 import { Headline } from "../../atoms";
 import { AuthLayout } from "../../layout";
 import { ResetPasswordForm } from "../../organisms";
-import "./auth.styles.css";
 
 export const ResetPasswordPage: React.FC = () => {
   const { t } = useTranslation();
@@ -15,7 +14,7 @@ export const ResetPasswordPage: React.FC = () => {
     },
     right: {
       component: (
-        <Headline level={2} className="auth-screen-sub-header">
+        <Headline level={2}>
           {
             <Trans
               t={t}

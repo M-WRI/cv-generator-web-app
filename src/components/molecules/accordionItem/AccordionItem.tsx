@@ -25,7 +25,7 @@ export const AccordionItem = ({
     <>
       <li
         onClick={() => handleAccordionClick(id, url)}
-        className={`cursor-pointer p-4 flex items-center shrink-0 border-black ${
+        className={`cursor-pointer p-4 flex items-center shrink-0 border-black-500 ${
           isActive ? "bg-primary-500 border-b-2 text-white" : "border-t-2"
         }`}
       >

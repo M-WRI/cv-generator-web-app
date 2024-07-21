@@ -14,9 +14,9 @@ export const AuthLayout = ({
   };
 }) => {
   return (
-    <div className="flex justify-around items-center h-screen gap-8 px-4">
+    <div className="flex justify-around gap-8 items-center h-screen px-4">
       <section
-        className={`w-full max-w-[300px] ${
+        className={`w-full max-w-[300px] grid gap-8 ${
           left?.className ? left.className : ""
         }`}
       >
@@ -24,7 +24,7 @@ export const AuthLayout = ({
       </section>
       {right && (
         <section
-          className={`w-full max-w-[300px] hidden md:block ${
+          className={`w-full max-w-[300px] grid gap-8 hidden md:block ${
             right?.className ? right.className : ""
           }`}
         >
