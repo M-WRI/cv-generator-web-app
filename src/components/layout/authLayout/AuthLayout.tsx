@@ -1,4 +1,5 @@
 import React from "react";
+import { Header } from "../../organisms";
 
 export const AuthLayout = ({
   left,
@@ -14,23 +15,26 @@ export const AuthLayout = ({
   };
 }) => {
   return (
-    <div className="flex justify-around gap-8 items-center h-screen px-4">
-      <section
-        className={`w-full max-w-[300px] grid gap-8 ${
-          left?.className ? left.className : ""
-        }`}
-      >
-        {left.component}
-      </section>
-      {right && (
+    <div className="flex flex-col h-screen">
+      <Header />
+      <div className="flex flex-grow justify-around gap-8 items-center px-4">
         <section
-          className={`w-full max-w-[300px] grid gap-8 hidden md:block ${
-            right?.className ? right.className : ""
+          className={`w-full max-w-[300px] grid gap-8 ${
+            left?.className ? left.className : ""
           }`}
         >
-          {right.component}
+          {left.component}
         </section>
-      )}
+        {right && (
+          <section
+            className={`w-full max-w-[300px] hidden md:block ${
+              right?.className ? right.className : ""
+            } ${right ? "grid gap-8" : ""}`}
+          >
+            {right.component}
+          </section>
+        )}
+      </div>
     </div>
   );
 };
