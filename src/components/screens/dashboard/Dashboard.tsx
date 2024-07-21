@@ -1,5 +1,5 @@
 import React from "react";
-import { Accordion, CVAccordionContent } from "../../organisms";
+import { Accordion, CVAccordionContent, Header } from "../../organisms";
 import { Outlet } from "react-router-dom";
 import "./dashboard.styles.css";
 
@@ -13,13 +13,16 @@ export const Dashboard: React.FC = () => {
   ];
 
   return (
-    <div className="dashboard-container">
-      <aside className="sidebar-container">
-        <Accordion accordionItems={accordionItems} />
-      </aside>
-      <main>
-        <Outlet />
-      </main>
-    </div>
+    <>
+      <Header />
+      <div className="dashboard-container">
+        <aside className="sidebar-container">
+          <Accordion accordionItems={accordionItems} />
+        </aside>
+        <main>
+          <Outlet />
+        </main>
+      </div>
+    </>
   );
 };

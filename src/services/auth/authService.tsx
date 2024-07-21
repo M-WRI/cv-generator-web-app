@@ -9,6 +9,7 @@ import {
   SignUpFormReponse,
   SignUpFormValues,
 } from "./types";
+import Cookies from "js-cookie";
 
 export const useForgotPassword = ({
   options,
@@ -123,4 +124,13 @@ export const useVerifyEmail = ({
   });
 
   return { verifyEmailData, ...rest };
+};
+
+export const useSignOut = () => {
+  const signOut = () => {
+    Cookies.remove("token");
+    window.location.reload();
+  };
+
+  return { signOut };
 };

@@ -1,23 +1,30 @@
 import { Headline } from "../../atoms";
 import { MdLogin, MdLogout, MdOutlineAccountBox } from "react-icons/md";
 import { NavContainer } from "../../molecules";
+import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
+import { useSignOut } from "../../../services";
 
 export const Header = () => {
+  const { t } = useTranslation();
+  const { signOut } = useSignOut();
+  const navigate = useNavigate();
+
   const navItems = [
     {
-      translationKey: "Signin",
+      translationKey: t("Signin"),
       Icon: MdLogin,
-      action: () => console.log("signin"),
+      action: () => navigate("/"),
     },
     {
-      translationKey: "Signup",
+      translationKey: t("Signup"),
       Icon: MdOutlineAccountBox,
-      action: () => console.log("signup"),
+      action: () => navigate("/signup"),
     },
     {
-      translationKey: "Logout",
+      translationKey: t("Logout"),
       Icon: MdLogout,
-      action: () => console.log("logout"),
+      action: () => signOut(),
     },
   ];
   return (
