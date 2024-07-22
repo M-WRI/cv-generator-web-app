@@ -15,8 +15,8 @@ export const NavContainer = ({
   currentPath: string;
 }) => {
   return (
-    <nav>
-      <ul className="flex gap-4">
+    <nav className="w-full">
+      <ul className="flex justify-around sm:justify-end gap-4">
         {items.map(
           (item: {
             translationKey: string;

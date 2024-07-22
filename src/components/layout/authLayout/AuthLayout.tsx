@@ -15,7 +15,7 @@ export const AuthLayout = ({
   };
 }) => {
   return (
-    <div className="flex flex-col h-screen">
+    <div className="flex flex-col-reverse sm:flex-col  h-screen">
       <Header />
       <div className="flex flex-grow justify-around gap-8 items-center px-4">
         <section

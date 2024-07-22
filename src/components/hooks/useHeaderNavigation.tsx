@@ -1,11 +1,9 @@
 import { useTranslation } from "react-i18next";
+import { useIsAuthenticated, useSignOut } from "../../services";
 import { useLocation, useNavigate } from "react-router-dom";
-import { Headline } from "../../atoms";
-import { NavContainer } from "../../molecules";
-import { useIsAuthenticated, useSignOut } from "../../../services";
 import { MdLogin, MdLogout, MdOutlineAccountBox } from "react-icons/md";
 
-export const Header = () => {
+export const useHeaderNavigation = () => {
   const { t } = useTranslation();
   const { signOut } = useSignOut();
   const { isAuthenticated } = useIsAuthenticated();
@@ -39,12 +37,5 @@ export const Header = () => {
         },
       ];
 
-  return (
-    <div className="p-4 flex items-center justify-between border-black-500 border-b-2">
-      <div>
-        <Headline level={4}>{t("header.logo.title")}</Headline>
-      </div>
-      <NavContainer items={navItems} currentPath={location.pathname} />
-    </div>
-  );
+  return { navItems, currentPath: location.pathname };
 };
