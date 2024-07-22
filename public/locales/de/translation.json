@@ -1,4 +1,16 @@
 {
+  "header": {
+    "logo": {
+      "title": "CVSnap"
+    },
+    "nav": {
+      "navItems": {
+        "signIn": "Anmelden",
+        "signUp": "Registrieren",
+        "signOut": "Ausloggen"
+      }
+    }
+  },
   "signIn": {
     "title": {
       "main": "CVSnap",

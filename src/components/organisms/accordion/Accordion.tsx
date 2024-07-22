@@ -9,7 +9,7 @@ export const Accordion = ({ accordionItems }: { accordionItems: any[] }) => {
   };
 
   return (
-    <nav className="h-screen border-r-2 border-black-500">
+    <nav className="h-full border-r-2 border-black-500">
       <ul className="h-full flex flex-col justify-end">
         {accordionItems.map((item) => (
           <AccordionItem

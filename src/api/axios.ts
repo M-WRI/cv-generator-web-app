@@ -1,6 +1,4 @@
 import axios, { AxiosError } from "axios";
-import { isTokenValid } from "../utils";
-import { useSignOut } from "../services";
 import Cookies from "js-cookie";
 
 const axiosInstance = axios.create({
@@ -12,13 +10,8 @@ const axiosInstance = axios.create({
 axiosInstance.interceptors.request.use(
   (config) => {
     const token = Cookies.get("token");
-    if (token && isTokenValid(token)) {
-      if (config.headers) {
-        config.headers.Authorization = `Bearer ${token}`;
-      }
-    } else {
-      const { signOut } = useSignOut();
-      signOut();
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
     }
     return config;
   },

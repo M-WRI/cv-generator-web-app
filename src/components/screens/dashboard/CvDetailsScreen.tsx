@@ -11,6 +11,8 @@ export const CvDetailsScreen = () => {
     isFetching: CvDetailsIsFetching,
   } = useGetCvDetails({ id: id! });
 
+  console.log(CvDetails, "<------ cv details");
+
   useEffect(() => {
     id && refetch();
   }, [id]);
@@ -18,7 +20,7 @@ export const CvDetailsScreen = () => {
   return (
     <>
       {CvDetailsIsFetching ? (
-        <div className="cv-details-loading">
+        <div className="h-full flex items-center justify-center">
           <LoadingSpinner />
         </div>
       ) : (
