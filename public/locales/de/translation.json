@@ -1,7 +1,19 @@
 {
+  "header": {
+    "logo": {
+      "title": "CVSnap"
+    },
+    "nav": {
+      "navItems": {
+        "signIn": "Anmelden",
+        "signUp": "Registrieren",
+        "signOut": "Ausloggen"
+      }
+    }
+  },
   "signIn": {
     "title": {
-      "main": "JOB/BLOG",
+      "main": "CVSnap",
       "sub": "Willkommen zurück! <0>Anmelden</0>"
     },
     "signInForm": {
@@ -17,7 +29,7 @@
   },
   "signUp": {
     "title": {
-      "main": "JOB/BLOG",
+      "main": "CVSnap",
       "sub": "Erstellen Sie Ihr <0>Profil!</0>"
     },
     "signUpForm": {

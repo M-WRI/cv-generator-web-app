@@ -1,4 +1,5 @@
-export * from "./inputField/InputField";
+export * from "./inputField";
 export * from "./button";
 export * from "./accordionItem";
 export * from "./statusModal";
+export * from "./navContainer";

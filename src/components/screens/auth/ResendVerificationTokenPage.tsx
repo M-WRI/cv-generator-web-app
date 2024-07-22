@@ -5,7 +5,6 @@ import { ResendVerificationTokenForm } from "../../organisms";
 import { useNavigate, useParams } from "react-router-dom";
 import { useVerifyEmail } from "../../../services";
 import { useEffect } from "react";
-import "./auth.styles.css";
 
 export const ResendVerificationToken = () => {
   const { t } = useTranslation();
@@ -36,7 +35,7 @@ export const ResendVerificationToken = () => {
     },
     right: {
       component: (
-        <Headline level={2} className="auth-screen-sub-header">
+        <Headline level={2}>
           {<Trans t={t} i18nKey="resendVerificationToken.title.sub" />}
         </Headline>
       ),

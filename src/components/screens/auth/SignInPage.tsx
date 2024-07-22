@@ -3,7 +3,6 @@ import { Trans, useTranslation } from "react-i18next";
 import { Headline } from "../../atoms";
 import { SignInForm } from "../../organisms";
 import { AuthLayout } from "../../layout";
-import "./auth.styles.css";
 
 export const SignInPage: React.FC = () => {
   const { t } = useTranslation();
@@ -12,16 +11,14 @@ export const SignInPage: React.FC = () => {
     left: {
       component: (
         <>
-          <Headline className="auth-screen-header" level={1}>
-            {t("signIn.title.main")}
-          </Headline>
+          <Headline level={1}>{t("signIn.title.main")}</Headline>
           <SignInForm />
         </>
       ),
     },
     right: {
       component: (
-        <Headline level={2} className="auth-screen-sub-header">
+        <Headline level={2}>
           {
             <Trans
               t={t}

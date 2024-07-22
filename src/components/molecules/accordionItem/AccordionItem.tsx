@@ -25,13 +25,18 @@ export const AccordionItem = ({
     <>
       <li
         onClick={() => handleAccordionClick(id, url)}
-        className={`cursor-pointer p-4 flex items-center shrink-0 border-black ${
-          isActive ? "bg-primary-500 border-b-2 text-white" : "border-t-2"
+        className={`cursor-pointer flex items-center shrink-0 border-black-500 ${
+          isActive ? "border-b-2" : "border-t-2"
         }`}
       >
-        <Headline level={1} className="font-normal">
-          {t(title)}
-        </Headline>
+        <div className={`w-full px-4 py-2 ${isActive ? "bg-primary-500" : ""}`}>
+          <Headline
+            level={1}
+            className={`font-normal ${isActive ? "text-white" : ""}`}
+          >
+            {t(title)}
+          </Headline>
+        </div>
       </li>
 
       {activeItemId === id && (

@@ -30,7 +30,7 @@ export const Input: React.FC<InputProps> = ({
             ? "text-error-500 placeholder-error-500"
             : isDirty
             ? "text-primary-500"
-            : "text-black placeholder-black group-hover:placeholder-primary-500"
+            : "text-black-500 placeholder-black-500 group-hover:placeholder-primary-500"
         }`}
         {...rest}
       />
@@ -40,7 +40,7 @@ export const Input: React.FC<InputProps> = ({
             ? "bg-error-500"
             : isDirty
             ? "bg-primary-500"
-            : "bg-black group-hover:bg-primary-500"
+            : "bg-black-500 group-hover:bg-primary-500"
         }`}
       />
     </div>

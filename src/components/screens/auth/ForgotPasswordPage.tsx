@@ -2,7 +2,6 @@ import { Trans, useTranslation } from "react-i18next";
 import { Headline } from "../../atoms";
 import { AuthLayout } from "../../layout";
 import { ForgotPasswordForm } from "../../organisms";
-import "./auth.styles.css";
 
 export const ForgotPasswordPage = () => {
   const { t } = useTranslation();
@@ -14,7 +13,7 @@ export const ForgotPasswordPage = () => {
     },
     right: {
       component: (
-        <Headline level={2} className="auth-screen-sub-header">
+        <Headline level={2}>
           {<Trans t={t} i18nKey="forgotPassword.title.sub" />}
         </Headline>
       ),

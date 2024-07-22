@@ -1,7 +1,7 @@
 {
   "signIn": {
     "title": {
-      "main": "JOB/BLOG",
+      "main": "CVSnap",
       "sub": "Welcome back! <0>Sign In</0>"
     },
     "signInForm": {
@@ -17,7 +17,7 @@
   },
   "signUp": {
     "title": {
-      "main": "JOB/BLOG",
+      "main": "CVSnap",
       "sub": "Create your <0>Profile!</0>"
     },
     "signUpForm": {

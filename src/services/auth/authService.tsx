@@ -9,6 +9,8 @@ import {
   SignUpFormReponse,
   SignUpFormValues,
 } from "./types";
+import Cookies from "js-cookie";
+import { isTokenValid } from "../../utils";
 
 export const useForgotPassword = ({
   options,
@@ -123,4 +125,20 @@ export const useVerifyEmail = ({
   });
 
   return { verifyEmailData, ...rest };
+};
+
+export const useSignOut = () => {
+  const signOut = () => {
+    Cookies.remove("token");
+    window.location.reload();
+  };
+
+  return { signOut };
+};
+
+export const useIsAuthenticated = () => {
+  const token = Cookies.get("token");
+  const isAuthenticated = isTokenValid(token ?? null);
+
+  return { isAuthenticated };
 };
