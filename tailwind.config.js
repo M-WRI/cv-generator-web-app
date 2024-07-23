@@ -6,12 +6,15 @@ export default {
       colors: {
         black: {
           500: "#000000",
+          400: "#4C4C4C",
         },
         primary: {
           500: "#1800E9",
+          100: "#5f91f5",
         },
         error: {
           500: "#F44336",
+          100: "#f08078",
         },
       },
       fontSize: {

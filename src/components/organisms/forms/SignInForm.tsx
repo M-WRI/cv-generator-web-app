@@ -21,7 +21,7 @@ export const SignInForm: React.FC = () => {
   const { signIn, isLoading } = useSignIn({
     options: {
       onSuccess: (response) => {
-        Cookies.set("token", response.token, { expires: 7 });
+        Cookies.set("token", response.token);
         navigate("/dashboard");
       },
       onError: (error) => {
