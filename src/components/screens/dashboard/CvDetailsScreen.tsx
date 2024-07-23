@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { LoadingSpinner } from "../../atoms";
 import { useGetCvDetails } from "../../../services";
 
@@ -25,6 +25,9 @@ export const CvDetailsScreen = () => {
         </div>
       ) : (
         <div>
+          <Link to="/dashboard" className="h-10 w-10 bg-primary-500">
+            test
+          </Link>
           <h1>this is cv details</h1>
         </div>
       )}
