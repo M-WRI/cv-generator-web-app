@@ -1,6 +1,6 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
-import Cookies from "js-cookie";
+import { useIsAuthenticated } from "../../../services";
 
 interface PrivateRouteProps {
   element: React.ComponentType;
@@ -9,6 +9,7 @@ interface PrivateRouteProps {
 export const PrivateRoute: React.FC<PrivateRouteProps> = ({
   element: Element,
 }) => {
-  const isAuthenticated = !!Cookies.get("token");
+  const { isAuthenticated } = useIsAuthenticated();
+
   return isAuthenticated ? <Element /> : <Navigate to="/" />;
 };
