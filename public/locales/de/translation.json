@@ -108,6 +108,12 @@
     },
     "profile": {
       "title": "Profil"
+    },
+    "education": {
+      "title": "Ausbildung",
+      "placeholder": {
+        "degree": "Abschluss"
+      }
     }
   },
   "error": {

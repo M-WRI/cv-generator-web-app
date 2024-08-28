@@ -4,8 +4,10 @@ import { LoadingSpinner } from "../../atoms";
 import { useGetCvDetails } from "../../../services";
 import {
   CvAddressDetails,
+  CvEducationsDetails,
   CvLanguagesDetails,
   CvProfileDetails,
+  CvProfileSummaryDetails,
   CvSkills,
 } from "../../molecules";
 
@@ -21,6 +23,7 @@ export const CvDetailsScreen = () => {
   const addressDetails = CvDetails?.address?.[0];
   const skills = CvDetails?.skills;
   const languages = CvDetails?.languages;
+  const educations = CvDetails?.educations;
 
   useEffect(() => {
     id && refetch();
@@ -42,6 +45,8 @@ export const CvDetailsScreen = () => {
             <CvAddressDetails address={addressDetails} />
             <CvSkills skills={skills} />
             <CvLanguagesDetails languages={languages} />
+            <CvProfileSummaryDetails profileDetails={profileDetails} />
+            <CvEducationsDetails educations={educations} />
           </div>
         </>
       )}
