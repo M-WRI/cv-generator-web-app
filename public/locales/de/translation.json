@@ -99,6 +99,15 @@
     },
     "skills": {
       "title": "Kenntnisse"
+    },
+    "languages": {
+      "title": "Sprachen",
+      "placeholder": {
+        "level": "Level"
+      }
+    },
+    "profile": {
+      "title": "Profil"
     }
   },
   "error": {

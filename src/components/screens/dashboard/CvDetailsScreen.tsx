@@ -4,9 +4,10 @@ import { LoadingSpinner } from "../../atoms";
 import { useGetCvDetails } from "../../../services";
 import {
   CvAddressDetails,
+  CvLanguagesDetails,
   CvProfileDetails,
   CvSkills,
-} from "../../molecules/cvDetails";
+} from "../../molecules";
 
 export const CvDetailsScreen = () => {
   const { id } = useParams<{ id: string }>();
@@ -19,6 +20,7 @@ export const CvDetailsScreen = () => {
   const profileDetails = CvDetails?.profiles?.[0];
   const addressDetails = CvDetails?.address?.[0];
   const skills = CvDetails?.skills;
+  const languages = CvDetails?.languages;
 
   useEffect(() => {
     id && refetch();
@@ -39,6 +41,7 @@ export const CvDetailsScreen = () => {
             <CvProfileDetails profileDetails={profileDetails} />
             <CvAddressDetails address={addressDetails} />
             <CvSkills skills={skills} />
+            <CvLanguagesDetails languages={languages} />
           </div>
         </>
       )}
@@ -49,7 +52,7 @@ export const CvDetailsScreen = () => {
 const BackButton = () => {
   return (
     <Link to="/dashboard" className="h-10 w-10 bg-primary-500">
-      test
+      This will be the back button
     </Link>
   );
 };

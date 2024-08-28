@@ -5,3 +5,4 @@ export * from "./loadingSpinner";
 export * from "./formContainer";
 export * from "./navListItem";
 export * from "./scaleLine";
+export * from "./scaleCircle";
