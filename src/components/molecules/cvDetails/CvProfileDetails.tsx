@@ -1,4 +1,3 @@
-import { t } from "i18next";
 import { Profile } from "../../../services";
 import { Text } from "../../atoms";
 import { CvContacts } from "./CvContacts";
