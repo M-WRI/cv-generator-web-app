@@ -17,7 +17,7 @@ export const Dashboard: React.FC = () => {
   return (
     <div className="flex flex-col-reverse sm:flex-col h-screen">
       <Header />
-      <div className="flex-grow grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="flex-grow grid grid-cols-1 md:grid-cols-2">
         <aside
           className={`list-none p-0 ${
             showRightSide ? "hidden md:block" : "block"

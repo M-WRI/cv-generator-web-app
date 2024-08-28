@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { LoadingSpinner } from "../../atoms";
 import { useGetCvDetails } from "../../../services";
-import { CvAddressDetails, CvProfileDetails } from "../../molecules/cvDetails";
+import { CvProfileDetails } from "../../molecules/cvDetails";
 
 export const CvDetailsScreen = () => {
   const { id } = useParams<{ id: string }>();
@@ -13,7 +13,6 @@ export const CvDetailsScreen = () => {
   } = useGetCvDetails({ id: id! });
 
   const profileDetails = CvDetails?.profiles?.[0];
-  const addressDetails = CvDetails?.address?.[0];
 
   useEffect(() => {
     id && refetch();
@@ -33,7 +32,6 @@ export const CvDetailsScreen = () => {
             test
           </Link>
           <CvProfileDetails profileDetails={profileDetails} />
-          <CvAddressDetails address={addressDetails} />
         </div>
       )}
     </>

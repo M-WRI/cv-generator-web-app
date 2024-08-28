@@ -4,7 +4,7 @@ import { CVDetailedResponse, CVListResponse } from "./types";
 export const useGetCvs = () => {
   const { data: CvList, ...rest } = useFetch<CVListResponse[]>({
     url: "http://localhost:8000/api/cvs",
-    queryKey: "cvList",
+    queryKey: ["cvList"],
   });
 
   return { CvList, ...rest };
@@ -13,7 +13,7 @@ export const useGetCvs = () => {
 export const useGetCvDetails = ({ id }: { id: string }) => {
   const { data: CvDetails, ...rest } = useFetch<CVDetailedResponse>({
     url: `http://localhost:8000/api/cvs/${id}`,
-    queryKey: "cvDetails",
+    queryKey: ["cvDetails", id],
     options: {
       enabled: false,
     },
