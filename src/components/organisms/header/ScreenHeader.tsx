@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { Headline } from "../../atoms";
 import { NavContainer } from "../../molecules";
-import { useHeaderNavigation } from "../../hooks";
+import { useHeaderNavigation } from "../../../hooks";
 
 export const Header = () => {
   const { navItems, currentPath } = useHeaderNavigation();

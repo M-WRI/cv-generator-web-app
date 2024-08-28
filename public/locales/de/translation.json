@@ -90,6 +90,35 @@
       }
     }
   },
+  "CV": {
+    "contact": {
+      "title": "Kontakt"
+    },
+    "address": {
+      "title": "Adresse"
+    },
+    "skills": {
+      "title": "Kenntnisse"
+    },
+    "languages": {
+      "title": "Sprachen",
+      "placeholder": {
+        "level": "Level"
+      }
+    },
+    "profile": {
+      "title": "Profil"
+    },
+    "education": {
+      "title": "Ausbildung",
+      "placeholder": {
+        "degree": "Abschluss"
+      }
+    },
+    "experience": {
+      "title": "Erfahrung"
+    }
+  },
   "error": {
     "general": {
       "serverError": "Serverfehler. Bitte versuchen Sie es später erneut",

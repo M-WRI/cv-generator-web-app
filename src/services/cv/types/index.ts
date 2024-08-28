@@ -4,6 +4,7 @@ export interface CVDetailedResponse {
   userId: number;
   user?: User;
   profiles?: Profile[];
+  address?: Address[];
   educations?: Education[];
   skills?: Skill[];
   languages?: Language[];
@@ -45,6 +46,23 @@ export interface Profile {
   lastName: string;
   profileImage?: string | null;
   profileSummary?: string | null;
+  userId: number;
+  user: User;
+  cvs?: CVDetailedResponse[];
+  // CHANGE THIS TO AN OWN TYPE
+  contacts: {
+    type: string;
+    link: string;
+  }[];
+}
+
+export interface Address {
+  id: number;
+  street: string;
+  city: string;
+  zipCode: string;
+  state: string;
+  country: string;
   userId: number;
   user: User;
   cvs?: CVDetailedResponse[];
