@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { useIsAuthenticated, useSignOut } from "../../services";
+import { useIsAuthenticated, useSignOut } from "../services";
 import { useLocation, useNavigate } from "react-router-dom";
 import { MdLogin, MdLogout, MdOutlineAccountBox } from "react-icons/md";
 

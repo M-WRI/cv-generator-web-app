@@ -5,7 +5,7 @@ export const CvAddressDetails = ({ address }: { address?: Address }) => {
   return (
     <div className="grid">
       <div className="bg-primary-100 p-4">
-        <Text translationKey={"Address"} className="text-black-500" />
+        <Text translationKey={"CV.address.title"} className="text-black-500" />
       </div>
       <div className="p-4 border-b-2 border-black-500">
         <Text translationKey={address?.street} />
