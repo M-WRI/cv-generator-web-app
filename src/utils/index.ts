@@ -1,3 +1,3 @@
 export * from "./generateTranslationKey";
 export * from "./isTokenValid";
-export * from "./formatEducationDates";
+export * from "./formatDates";

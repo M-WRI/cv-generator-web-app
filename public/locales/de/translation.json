@@ -114,6 +114,9 @@
       "placeholder": {
         "degree": "Abschluss"
       }
+    },
+    "experience": {
+      "title": "Erfahrung"
     }
   },
   "error": {

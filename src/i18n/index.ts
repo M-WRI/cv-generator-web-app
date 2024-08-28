@@ -12,6 +12,7 @@ i18n
     debug: true,
     interpolation: {
       escapeValue: false,
+      skipOnVariables: true,
     },
     backend: {
       loadPath: "/locales/{{lng}}/{{ns}}.json",

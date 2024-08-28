@@ -5,6 +5,7 @@ import { useGetCvDetails } from "../../../services";
 import {
   CvAddressDetails,
   CvEducationsDetails,
+  CvExperienceDetails,
   CvLanguagesDetails,
   CvProfileDetails,
   CvProfileSummaryDetails,
@@ -24,6 +25,7 @@ export const CvDetailsScreen = () => {
   const skills = CvDetails?.skills;
   const languages = CvDetails?.languages;
   const educations = CvDetails?.educations;
+  const experiences = CvDetails?.workExperiences;
 
   useEffect(() => {
     id && refetch();
@@ -47,6 +49,7 @@ export const CvDetailsScreen = () => {
             <CvLanguagesDetails languages={languages} />
             <CvProfileSummaryDetails profileDetails={profileDetails} />
             <CvEducationsDetails educations={educations} />
+            <CvExperienceDetails experiences={experiences} />
           </div>
         </>
       )}

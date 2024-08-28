@@ -1,5 +1,5 @@
 import { Education } from "../../../services";
-import { formatEducationDates } from "../../../utils";
+import { formatDates } from "../../../utils";
 import { Text } from "../../atoms";
 
 export const CvEducationsDetails = ({
@@ -22,7 +22,14 @@ export const CvEducationsDetails = ({
               <Text translationKey={education?.school} />
             </div>
             <div className="p-4 border-b-2 border-black-500">
-              <Text translationKey={formatEducationDates(education)} />
+              <Text
+                translationKey={formatDates(
+                  education.startYear,
+                  education.startMonth,
+                  education.endYear,
+                  education.endMonth
+                )}
+              />
             </div>
             <div className="grid grid-cols-[1fr_3fr]">
               <div className="p-4 border-b-2 border-r-2 border-black-500">
