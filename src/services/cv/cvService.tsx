@@ -1,4 +1,5 @@
-import { useFetch } from "../../api/dataProvider";
+import { useDelete, useFetch } from "../../api/dataProvider";
+import { TDeleteOptions } from "../../types";
 import { CVDetailedResponse, CVListResponse } from "./types";
 
 export const useGetCvs = () => {
@@ -20,4 +21,17 @@ export const useGetCvDetails = ({ id }: { id: string }) => {
   });
 
   return { CvDetails, ...rest };
+};
+
+export const useDeleteCv = ({ options }: { options?: TDeleteOptions }) => {
+  const { mutate, ...rest } = useDelete({
+    url: `http://localhost:8000/api/cvs/:id`,
+    options,
+  });
+
+  const deleteCv = (id: string | number) => {
+    mutate({ id });
+  };
+
+  return { deleteCv, ...rest };
 };

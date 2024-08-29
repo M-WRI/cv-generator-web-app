@@ -1,10 +1,18 @@
 import { useNavigate } from "react-router-dom";
 import { Headline } from "../../atoms";
-import { CVListResponse, useGetCvs } from "../../../services";
+import { CVListResponse, useDeleteCv, useGetCvs } from "../../../services";
 import { DeleteButton } from "../../molecules";
 
 export const CVAccordionContent = () => {
-  const { CvList } = useGetCvs();
+  const { CvList, refetch: refetchCvList } = useGetCvs();
+  const { deleteCv } = useDeleteCv({
+    options: {
+      onSuccess: () => {
+        refetchCvList();
+      },
+    },
+  });
+
   const navigate = useNavigate();
 
   return (
@@ -23,7 +31,7 @@ export const CVAccordionContent = () => {
                 {cv.title}
               </Headline>
             </div>
-            <DeleteButton />
+            <DeleteButton id={cv.id} action={deleteCv} />
           </li>
         ))}
       </ul>

@@ -1,5 +1,6 @@
 import axios, { AxiosError } from "axios";
 import Cookies from "js-cookie";
+import { ErrorResponse } from "../types";
 
 const axiosInstance = axios.create({
   headers: {
@@ -51,6 +52,24 @@ export const axiosPost = async <TVariables extends any, TResponse = TVariables>(
     if (axios.isAxiosError(error)) {
       const axiosError = error as AxiosError<TResponse>;
       throw axiosError?.response?.data;
+    } else {
+      throw new Error("An unexpected error occurred");
+    }
+  }
+};
+
+export const axiosDelete = async (
+  url: string,
+  headers: Record<string, string> = {}
+): Promise<void> => {
+  try {
+    await axiosInstance.delete<void>(url, { headers });
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      const axiosError = error as AxiosError<ErrorResponse>;
+      throw (
+        axiosError?.response?.data ?? new Error("An unexpected error occurred")
+      );
     } else {
       throw new Error("An unexpected error occurred");
     }
