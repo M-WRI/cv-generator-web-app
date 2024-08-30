@@ -119,6 +119,14 @@
       "title": "Erfahrung"
     }
   },
+  "modals": {
+    "deleteCv": {
+      "title": "Sind Sie sich sicher?",
+      "description": "Möchten Sie diesen Lebenslauf wirklich löschen?",
+      "confirm": "Löschen",
+      "cancel": "Schließen"
+    }
+  },
   "error": {
     "general": {
       "serverError": "Serverfehler. Bitte versuchen Sie es später erneut",
