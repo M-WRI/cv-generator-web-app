@@ -7,11 +7,12 @@ import {
 import {
   ErrorResponse,
   IRequestPost,
+  TDeleteOptions,
   TMutationOptions,
   TQueryKey,
   TQueryOptions,
 } from "../types";
-import { axiosGet, axiosPost } from "./axios";
+import { axiosDelete, axiosGet, axiosPost } from "./axios";
 import { useError } from "../context";
 
 export const useFetch = <BR extends any>({
@@ -69,6 +70,46 @@ export const usePost = <TVariables, TResponse = any>({
     {
       retry: 0,
       onError: (error) => {
+        setError(error);
+      },
+      ...options,
+    }
+  );
+
+  return mutation;
+};
+
+export const useDelete = ({
+  options,
+  url,
+}: {
+  url: string;
+  options?: TDeleteOptions;
+}): UseMutationResult<
+  { message: string },
+  ErrorResponse,
+  { [key: string]: any }
+> => {
+  const { setError } = useError();
+  const headers = options?.meta?.headers as Record<string, string>;
+
+  const mutation = useMutation<
+    { message: string },
+    ErrorResponse,
+    { [key: string]: any }
+  >(
+    async (variables: { [key: string]: any }) => {
+      const processedUrl = Object.keys(variables).reduce(
+        (acc, key) => acc.replace(`:${key}`, variables[key]),
+        url
+      );
+
+      await axiosDelete(processedUrl, headers);
+
+      return { message: "Deletion was successful" };
+    },
+    {
+      onError: (error: ErrorResponse) => {
         setError(error);
       },
       ...options,

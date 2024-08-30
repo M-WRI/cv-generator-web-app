@@ -106,9 +106,9 @@ export interface WorkExperience {
   position: string;
   startMonth: number;
   startYear: number;
-  endMonth?: number | null;
-  endYear?: number | null;
-  workDescription?: string | null;
+  endMonth: number;
+  endYear: number;
+  workDescription: string;
   userId: number;
   user: User;
   cvs?: CVDetailedResponse[];

@@ -15,17 +15,26 @@ export const Dashboard: React.FC = () => {
   const showRightSide = location.pathname !== "/dashboard";
 
   return (
-    <div className="flex flex-col-reverse sm:flex-col h-screen">
+    <div className="flex flex-col-reverse md:flex-col">
       <Header />
-      <div className="flex-grow grid grid-cols-1 md:grid-cols-2">
+      <div
+        className="grid grid-cols-1 md:grid-cols-2 h-screen overflow-hidden"
+        style={{
+          height: "calc(100vh - 76px)",
+        }}
+      >
         <aside
-          className={`list-none p-0 ${
+          className={`h-full overflow-hidden list-none p-0 ${
             showRightSide ? "hidden md:block" : "block"
           }`}
         >
           <Accordion accordionItems={accordionItems} />
         </aside>
-        <main className={`${showRightSide ? "block" : "hidden"} md:block`}>
+        <main
+          className={`${
+            showRightSide ? "block" : "hidden"
+          } md:block overflow-y-scroll`}
+        >
           <Outlet />
         </main>
       </div>

@@ -7,7 +7,6 @@ export const CvExperienceDetails = ({
 }: {
   experiences?: WorkExperience[];
 }) => {
-  console.log(experiences, "<-------- experiences");
   return (
     <div className="grid">
       <div className="bg-primary-100 p-4">
@@ -39,7 +38,7 @@ export const CvExperienceDetails = ({
               />
             </div>
             <div className="p-4 border-b-2 border-black-500">
-              <Text translationKey={experience?.workDescription} />
+              <Text translationKey={experience.workDescription} />
             </div>
           </div>
         );
