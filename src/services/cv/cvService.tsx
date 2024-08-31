@@ -12,7 +12,7 @@ export const useGetCvs = () => {
 };
 
 export const useGetCvDetails = ({ id }: { id: string }) => {
-  const { data: CvDetails, ...rest } = useFetch<CVDetailedResponse>({
+  const { data: cvDetails, ...rest } = useFetch<CVDetailedResponse>({
     url: `http://localhost:8000/api/cvs/${id}`,
     queryKey: ["cvDetails", id],
     options: {
@@ -20,7 +20,7 @@ export const useGetCvDetails = ({ id }: { id: string }) => {
     },
   });
 
-  return { CvDetails, ...rest };
+  return { cvDetails, ...rest };
 };
 
 export const useDeleteCv = ({ options }: { options?: TDeleteOptions }) => {

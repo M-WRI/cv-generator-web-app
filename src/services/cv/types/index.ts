@@ -74,12 +74,12 @@ export interface Education {
   school: string;
   startMonth: number;
   startYear: number;
-  endMonth?: number | null;
-  endYear?: number | null;
-  additionalInfo?: string | null;
+  endMonth: number;
+  endYear: number;
+  additionalInfo: string | null;
   userId: number;
   user: User;
-  cvs?: CVDetailedResponse[];
+  cvs: CVDetailedResponse[];
 }
 
 export interface Skill {

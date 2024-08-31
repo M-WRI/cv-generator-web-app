@@ -2,34 +2,22 @@ import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { LoadingSpinner } from "../../atoms";
 import { useGetCvDetails } from "../../../services";
-import {
-  CvAddressDetails,
-  CvEducationsDetails,
-  CvExperienceDetails,
-  CvLanguagesDetails,
-  CvProfileDetails,
-  CvProfileSummaryDetails,
-  CvSkills,
-} from "../../molecules";
+import { CV_DETAILS_CONFIG } from "../../../constants";
+import { generateCvFields } from "../../../utils";
 
 export const CvDetailsScreen = () => {
   const { id } = useParams<{ id: string }>();
   const {
-    CvDetails,
+    cvDetails,
     refetch,
     isFetching: CvDetailsIsFetching,
   } = useGetCvDetails({ id: id! });
 
-  const profileDetails = CvDetails?.profiles?.[0];
-  const addressDetails = CvDetails?.address?.[0];
-  const skills = CvDetails?.skills;
-  const languages = CvDetails?.languages;
-  const educations = CvDetails?.educations;
-  const experiences = CvDetails?.workExperiences;
-
   useEffect(() => {
     id && refetch();
   }, [id]);
+
+  const result = generateCvFields(CV_DETAILS_CONFIG, cvDetails);
 
   return (
     <>
@@ -40,15 +28,7 @@ export const CvDetailsScreen = () => {
       ) : (
         <>
           <BackButton />
-          <div>
-            <CvProfileDetails profileDetails={profileDetails} />
-            <CvAddressDetails address={addressDetails} />
-            <CvSkills skills={skills} />
-            <CvLanguagesDetails languages={languages} />
-            <CvProfileSummaryDetails profileDetails={profileDetails} />
-            <CvEducationsDetails educations={educations} />
-            <CvExperienceDetails experiences={experiences} />
-          </div>
+          <div>{result}</div>
         </>
       )}
     </>

@@ -106,16 +106,16 @@
         "level": "Level"
       }
     },
-    "profile": {
+    "profiles": {
       "title": "Profil"
     },
-    "education": {
+    "educations": {
       "title": "Ausbildung",
       "placeholder": {
         "degree": "Abschluss"
       }
     },
-    "experience": {
+    "workExperiences": {
       "title": "Erfahrung"
     }
   },
